@@ -1,0 +1,521 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('https://fonts.googleapis.com/css?family=VT323');
+@import url('https://fonts.googleapis.com/css?family=Neucha');
+
+
+body{
+    overflow-x: hidden;
+    background-color: #e1f5fc !important ;
+    font-family: 'Neucha', cursive !important;
+}
+
+h1, h2, h3, h4, h5, h6, p, a{
+    font-family: 'Neucha', cursive !important;
+}
+
+p, li{
+    font-size: 1.1em;
+    font-family: 'Neucha', cursive !important;
+}
+
+#mainNav {
+    background-color: #63a8c7e0;
+    text-align: center;
+}
+
+.logo{
+    width:80%;
+}
+
+#mainNav .navbar-toggler {
+    font-size: 12px;
+    right: 0;
+    padding: 13px;
+    text-transform: uppercase;
+    color: #006f8a;
+    border: 0;
+    background-color: #ffffff;
+    font-family: 'Neucha', cursive;
+    margin: auto;
+}
+
+#mainNav .navbar-brand {
+    color: #fed136;
+    font-family: 'Neucha', cursive;
+}
+
+#mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+    color: #fec503;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+    font-size: 1.3em;
+    font-weight: 400;
+    padding: 0.75em 0;
+    letter-spacing: 1px;
+    color: white;
+    font-family: 'Neucha', cursive;
+}
+
+.nav-link{
+    text-align: center;
+    width: 9em;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
+    color: #fed136;
+}
+
+#explications{
+    color: #fff;
+    margin: auto;
+}
+
+#inscription{
+    color: #fef8e0;
+    margin: auto;
+}
+
+#connection{
+    color: #fcd5df;
+    margin: auto;
+}
+
+
+
+@media (min-width: 992px) {
+    #mainNav {
+        padding-top: 5px;
+        -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
+        transition: padding-top 0.3s, padding-bottom 0.3s;
+        border: none;
+        background-color: transparent;
+    }
+    #mainNav .navbar-brand {
+        font-size: 1.75em;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+    #mainNav .navbar-nav .nav-item .nav-link {
+        padding: 1.1em 1em !important;
+    }
+    .scrolled-nav {
+        padding-top: 0;
+        padding-bottom: 0;
+        background-color: #63a8c7e0;
+    }
+
+    #mainNav.navbar-shrink .navbar-brand {
+        font-size: 1.25em;
+        padding: 12px 0;
+    }
+
+    a #explications{
+        color: #fff;
+    }
+
+    a #inscription{
+        color: #fef8e0;
+    }
+
+    a #connection{
+        color: #fcd5df;
+    }
+}
+
+header.currentMasthead{
+    margin-bottom: 50px;
+    background: no-repeat center bottom;
+    background-color: #868e96;
+    background-attachment: scroll;
+    position: relative;
+    background-size: cover;
+}
+
+.site-heading{
+    padding: 160px 0;
+    text-align: center;
+}
+
+.subheading{
+    display: block;
+    font-family: 'Neucha', cursive;
+    font-size: 3em;
+    color: white;
+}
+
+header.masthead {
+    text-align: center;
+    color: white;
+    background: url("../img/bgstar2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+
+}
+
+header.masthead .intro-text {
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+header.masthead .intro-text .intro-lead-in {
+    font-size: 22px;
+    font-style: italic;
+    line-height: 22px;
+    margin-bottom: 25px;
+    font-family: 'Neucha', cursive;
+}
+
+header.masthead .intro-text .intro-heading {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 25px;
+    font-family: 'Neucha', cursive;
+}
+
+
+
+@media (min-width: 768px) {
+    header.masthead .intro-text {
+        padding-top: 200px;
+        padding-bottom: 200px;
+    }
+    header.masthead .intro-text .intro-lead-in {
+        font-size: 40px;
+        font-style: italic;
+        line-height: 40px;
+        margin-bottom: 25px;
+
+    }
+    header.masthead .intro-text .intro-heading {
+        font-size: 75px;
+        font-weight: 700;
+        line-height: 75px;
+        margin-bottom: 50px;
+
+    }
+
+
+}
+
+#notice{
+    padding-top: 5em;
+}
+
+.notice-member {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.notice-member img {
+    width: 225px;
+    height: 225px;
+    border: 7px solid #fff;
+}
+
+.notice-member h4 {
+    margin-top: 25px;
+    margin-bottom: 0;
+    text-transform: none;
+}
+
+.notice-member p {
+    margin-top: 0;
+}
+
+.text-muted{
+    font-size: 1.3em;
+    margin-bottom: 1.8em;
+}
+
+
+.pricing .card {
+    border: none;
+    border-radius: 1rem;
+    transition: all 0.2s;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.pricing hr {
+    margin: 1.5rem 0;
+}
+
+.pricing .card-title {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+}
+
+.pricing .card-price {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.pricing .card-price .period {
+    font-size: 0.8rem;
+}
+
+.pricing ul li {
+    margin-bottom: 1rem;
+}
+
+.pricing .text-muted {
+    opacity: 0.7;
+}
+
+.pricing .btn {
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+
+label{
+    font-weight: bold;
+    margin-bottom: 0 !important;
+    margin-top: .5em;
+}
+
+.fa-ul li{
+    list-style-type: none;
+    font-weight: bold;
+}
+
+
+.btn.btn-block.btn-primary.text-uppercase{
+    background-color: #8d54ff;
+    border-color: #8d54ff;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-size: 1.1em;
+}
+
+
+
+.card-price.text-center{
+    color: #d30651;
+}
+
+@media (min-width: 992px) {
+    .pricing .card:hover {
+        margin-top: -.25rem;
+        margin-bottom: .25rem;
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+    }
+    .pricing .card:hover .btn {
+        opacity: 1;
+    }
+}
+
+footer{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.childButton{
+
+    background: url("../img/logo.png");
+    background-size: 100% 100%;
+    border: none;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    display:inline-block;
+    cursor:pointer;
+    text-decoration:none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: .8em 1em;
+}
+
+/* Liste Nounou
+ */
+
+.timeline-heading{
+    color: #ff619b;
+}
+
+.timeline-inverted{
+    margin-bottom: 100px;
+    position: relative;
+    list-style-type: none;
+}
+
+.timeline-image {
+    position: relative;
+    z-index: 100;
+    left: 0;
+    width: 7em;
+    height: 7em;
+    margin-left: 0;
+    text-align: center;
+    color: #fff;
+    border: 7px solid #e9ecef;
+    border-radius: 100%;
+    background-color: #e1f5fc00;}
+
+.rounded-circle{
+    border-radius: 50%!important;
+    max-height: 100%;
+}
+
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.timeline-panel{
+    position: relative;
+    float: right;
+    width: 85%;
+    padding: 0 20px 0 100px;
+    text-align: left;}
+
+
+
+.timeline-panel .text-muted{
+    color: #D30651!important;
+    margin-bottom: 1em;
+}
+
+.fas.fa-map-marker-alt{
+    margin-right: .25em;
+    margin-top: .5em;
+    color: #D30651;
+}
+
+.name{
+    font-size: 1.7em !important;
+}
+
+.contactButton{
+    background: url("../img/pink.png");
+    background-size: 100% 100%;
+    border: none;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    display:inline-block;
+    cursor:pointer;
+    text-decoration:none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: .8em 1em;
+    color: #d30651;
+    font-size: 1.1em;
+    margin-left: 1em;
+}
+
+.contactButton:hover{
+    color: #ff015e;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .timeline-panel{
+        padding: 0 !important;
+        margin: auto;
+    }
+
+    ul{
+        padding: 0 !important;
+    }
+
+    .timeline-image{
+        margin:auto;
+    }
+
+    .timeline-body{
+        text-align: center;
+    }
+
+    .timeline-panel .text-muted{
+        text-align: justify;
+    }
+}
+
+/* Page contact */
+
+.contactNanny h4{
+    color: #d6004f;
+}
+
+.submitButton{
+    background-color: #d6004f !important;
+    border: #d6004f !important;
+}
+
+.submitButton:hover{
+    background-color: #ff015e !important;
+    border: #ff015e !important;
+}
+
+/* create Journal */
+
+#formJournal{
+    text-align: center;
+    color: #200061²;
+}
+
+#formJournal button{
+    background-color: #8d54ff;
+    border: #8d54ff;
+}
+
+#formJournal button:hover{
+    background-color: #a477ff;
+    border: #a477ff;
+}
+
+.archives button{
+    background-color: #17a2b8;
+    border: #17a2b8;
+}
+
+.archives button:hover{
+    background-color: #18b3b8;
+    border: #18b3b8;
+}
+
+.h4Journal, .archives h4, .titleChild{
+    color: #d6004f;
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-weight: bold;
+    font-size: 1.6em;
+
+}
+
+.archives h4{
+    margin-top: 2em;
+}
+
+.archives{
+    color:#200061;
+}
+
+.nameChild{
+    background: url("../img/logo.png");
+    background-size: 100% 100%;
+    border: none;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    display:inline-block;
+    text-decoration:none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: .8em 1em;
+    color: #fff;
+    font-size: 1.5em;
+    margin-left: 1em;
+}

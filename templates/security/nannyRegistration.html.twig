@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top " id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href=""><img src="{{ asset('img/logoName.png') }}" class="logo" id="logo"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item">
+                        <a id="explications" class="nav-link js-scroll-trigger" href="{{ path('index') }}">Mode d'emploi</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a id="inscription" class="nav-link js-scroll-trigger" href="{{ path('security_registration') }}" >S'inscrire</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="connection" class="nav-link js-scroll-trigger" href="{{ path('security_connection') }}" >Connexion</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="currentMasthead" style="background-image: url({{ asset('img/bgstar2.jpg') }})">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-11 mx-auto">
+                    <div class="site-heading">
+                        <span class="subheading">INSCRIPTION</span>
+                        <img src="{{ asset('img/logo2.png') }}" class="logo2" style="width: 20%; margin-bottom: 40px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="pricing py-5">
+
+        <div class="container">
+            <div class="row">
+                <!-- Free Tier -->
+                <div class="col-lg-7">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="card-price text-center">NOUNOU</h5>
+                            <hr>
+                            <form class="form-signin">
+                                <div class="form-label-group">
+                                    <label for="inputUserame">Nom</label>
+                                    <input type="text" id="inputUserame" class="form-control" placeholder="Nom" required autofocus>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <label for="inputEmail">Prénom</label>
+                                    <input type="text" id="inputUserame" class="form-control" placeholder="Prénom" required autofocus>
+                                </div>
+                                <div class="form-label-group">
+                                    <label for="lastName">Ville</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+
+                                </div>
+
+                                <div class="form-label-group">
+                                    <label for="email">Description <span class="text-muted"></span></label>
+                                    <textarea name="meal" class="form-control" rows="5" id="meal"></textarea>
+
+                                </div>
+
+                                <hr>
+                                <div class="form-label-group">
+                                    <label for="inputEmail" style="margin: 0;">Adresse mail</label>
+                                    <input type="email" id="inputEmail" class="form-control" placeholder="votre@mail.fr" required>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <label for="inputPassword">Mot de passe</label>
+                                    <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <label for="inputPassword">Confirmation mot de passe</label>
+                                    <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                                </div>
+
+
+
+                                <div>
+                                    <input type="checkbox" id="horns" name="horns" required>
+                                    <label for="horns">J'atteste sur l'honneur être assistante maternelle agréée</label>
+                                </div>
+
+                                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Enregistrer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Plus Tier -->
+                <div class="col-lg-5">
+                    <div class="card mb-4 mb-lg-0">a
+                        <div class="card-body">
+                            <h5 class="card-price text-center">PARENTS</h5>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li>1 - Choisissez une Nounou</li>
+                                <li>2 - Prenez contact avec elle, et attendez une reponse de sa part</li>
+                                <li>3 - S'il est possible qu'elle acceuille votre enfant, vous serez ensuite enregistré et vous pourrez finaliser l'inscription !</li>
+                            </ul>
+                            <a href="#" class="btn btn-block btn-primary text-uppercase parents">CHOISIR UNE NOUNOU</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pro Tier -->
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

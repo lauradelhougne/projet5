@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes enfants{% endblock %}
+
+{% block body %}
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top " id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href=""><img src="{{ asset('img/logoName.png') }}" class="logo" id="logo" style=" width: 100%;" alt="logoTitle"></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item">
+                    <a id="explications" class="nav-link js-scroll-trigger" href="{{ path('index') }}">Liste des enfants</a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="inscription" class="nav-link js-scroll-trigger" href="{{ path('security_modifyNannyInfos') }}">Mes informations</a>
+                </li>
+                <li class="nav-item">
+                    <a id="inscription" class="nav-link js-scroll-trigger" href="{{ path('security_requestsNanny') }}">Gérer mes demandes</a>
+                </li>
+                <li class="nav-item">
+                    <a id="inscription" class="nav-link js-scroll-trigger" href="">Deconnexion</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <header class="currentMasthead" style="background-image: url({{ asset('img/bgstar2.jpg') }})">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-11 mx-auto">
+                    <div class="site-heading">
+                        <span class="subheading">Mon espace Nounou</span>
+                        <img src="{{ asset('img/logo2.png') }}" class="logo2" style="width: 20%; margin-bottom: 40px;" alt="logo">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="childListNanny">
+        <h4 class="titleChild">LES ENFANTS QUE JE GARDE</h4>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul>
+                        <li class="timeline-inverted">
+                            <div class="row align-items justify-content-center">
+                                <div class="timeline-image ">
+                                    <img class="rounded-circle img-fluid" src="{{ asset('img/child.png') }}" alt="">
+                                </div>
+                                <div class="timeline-panel col-md-3">
+                                    <div class="timeline-heading">
+                                        <h4 class="nameChild">Simon</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <a href="" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Ecrire dans le journal</a><br>
+                                        <a href="" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire les informations</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="row align-items justify-content-center">
+                                <div class="timeline-image ">
+                                    <img class="rounded-circle img-fluid" src="{{ asset('img/child.png') }}" alt="">
+                                </div>
+                                <div class="timeline-panel col-md-3">
+                                    <div class="timeline-heading">
+                                        <h4 class="nameChild">Marina</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <a href="" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Ecrire dans le journal</a><br>
+                                        <a href="" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire les informations</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="row align-items justify-content-center">
+                                <div class="timeline-image ">
+                                    <img class="rounded-circle img-fluid" src="{{ asset('img/child.png') }}" alt="">
+                                </div>
+                                <div class="timeline-panel col-md-3">
+                                    <div class="timeline-heading">
+                                        <h4 class="nameChild">Suzanne</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <a href="" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Ecrire dans le journal</a><br>
+                                        <a href="" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire les informations</a>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

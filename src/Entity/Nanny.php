@@ -69,7 +69,7 @@ class Nanny
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\child", mappedBy="nanny")
+     * @ORM\OneToMany(targetEntity="App\Entity\Child", mappedBy="nanny")
      */
     private $Child;
 

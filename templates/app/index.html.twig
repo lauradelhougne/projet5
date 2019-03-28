@@ -3,6 +3,86 @@
 {% block title %}Hello AppController!{% endblock %}
 
 {% block body %}
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top " id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href=""><img src="{{ asset('img/logoName.png') }}" class="logo" id="logo"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item">
+                        <a id="explications" class="nav-link js-scroll-trigger" href="{{ path('index') }}">Mode d'emploi</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a id="inscription" class="nav-link js-scroll-trigger" href="{{ path('security_registration') }}" >S'inscrire</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="connection" class="nav-link js-scroll-trigger" href="{{ path('security_connection') }}" >Connexion</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="masthead">
+        <div class="container">
+            <div class="intro-text">
+                <img src="{{ asset('img/logo2.png') }}" class="logo2" style="width: 20%; margin-bottom: 40px;">
+                <div class="intro-lead-in">Vous cherchez une nounou pour garde votre enfant ?</div>
+                <div class="intro-heading text-uppercase">Magic Nounou est fait pour vous !</div>
+
+            </div>
+        </div>
+    </header>
+
+    <section id="notice">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Découvrir Magic Nounou</h2>
+                    <h5 class="section-subheading text-muted">Besoin d'une Nounou ? Ou bien, vous souhaitez devenir une Nounou Top ?</h5>
+                    <h5 class="section-subheading text-muted">Rien de plus simple ! Suivez le guide ...</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="notice-member">
+                        <img class="mx-auto rounded-circle" src="{{ asset('img/parents.png') }}" alt="">
+                        <h4>Parents</h4>
+                        <p class="text-muted">Vous cherchez une nounou pour vos enfants ?</p>
+                        <p>1 - Choisissez une nounou dans la liste des Magic Nounou, et cliquez sur contacter</p>
+                        <p>2 - Remplissez le formulaire de contact, cliquez sur envoyer et attendez que la Magic Nounou vous réponde</p>
+                        <p>3 - Si elle est disponible, alors la procédure pour vous inscrire vous est envoyé</p>
+                        <p>4 - Il vous suffit de remplir vos informations personnelles en cliquant sur le lien "Mes informations" dans la barre de navigation</p>
+                        <p>5 - Et pour finir, compléter les renseignements de votre enfant en cliquant sur "Mon enfant", puis en selectionnant à côté de son prénom "Ses informations"</p>
+                        <p style="font-weight: bold;">Chaques jours vous pourrez lire le journal de bord que remplira votre Magic Nounou, et elle pourra aussi acceder à ses informations via son espace !</p>
+                        <a href="" class="">Trouver une nounou</a>
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="notice-member">
+                        <img class="mx-auto rounded-circle" src="{{ asset('img/nounou.png') }}" alt="">
+                        <h4>Devenir Magic Nounou</h4>
+                        <p class="text-muted">Vous cherchez des enfants à garder ? </p>
+                        <p></p>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 

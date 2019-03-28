@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire de contact{% endblock %}
+
+{% block body %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top " id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href=""><img src="{{ asset('img/logoName.png') }}" class="logo" id="logo"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item">
+                        <a id="explications" class="nav-link js-scroll-trigger" href="{{ path('index') }}">Mode d'emploi</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a id="inscription" class="nav-link js-scroll-trigger" href="{{ path('security_registration') }}" >S'inscrire</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="connection" class="nav-link js-scroll-trigger" href="{{ path('security_connection') }}" >Connexion</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="currentMasthead" style="background-image: url({{ asset('img/bgstar2.jpg') }})">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-11 mx-auto">
+                    <div class="site-heading">
+                        <span class="subheading">Formulaire de contact</span>
+                        <img src="{{ asset('img/logo2.png') }}" class="logo2" style="width: 20%; margin-bottom: 40px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 ">
+                    <h4 style="color: #d6004f;">Mon enfant</h4>
+                    <form class="contactNanny" novalidate="">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Nom</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Prénom</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="date">Date de naissance ou terme</label>
+                                <input class="form-control" type="date" value="2018-08-19" id="example-date-input">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="date">Date début de garde souhaitée</label>
+                                <input class="form-control" type="date" value="2018-08-19" id="example-date-input">
+                            </div>
+                        </div>
+
+                        <label >Jours d'acceuil souhaités :</label>
+                        <div class="row" style="margin-left: 1em;">
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" class="custom-control-input" id="monday">
+                                <label class="custom-control-label" for="monday">Lundi</label>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" class="custom-control-input" id="tuesday">
+                                <label class="custom-control-label" for="tuesday">Mardi</label>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" class="custom-control-input" id="wednesday">
+                                <label class="custom-control-label" for="wednesday">Mercredi</label>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left: 1em;">
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" class="custom-control-input" id="thursday">
+                                <label class="custom-control-label" for="thursday">Jeudi</label>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" class="custom-control-input" id="friday">
+                                <label class="custom-control-label" for="friday">Vendredi</label>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" class="custom-control-input" id="saturday">
+                                <label class="custom-control-label" for="saturday">Samedi</label>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <h4 class="mb-3">Mes informations</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstNameParent">Nom</label>
+                                <input type="text" class="form-control" id="firstNameParent" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastNameParent">Prénom</label>
+                                <input type="text" class="form-control" id="lastNameParent" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <label >Lien de parenté avec l'enfant :</label>
+
+                        <div class="row" style="margin-left: 1em;">
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" class="custom-control-input" id="thursday">
+                                <label class="custom-control-label" for="thursday">Mère</label>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" class="custom-control-input" id="friday">
+                                <label class="custom-control-label" for="friday">Père</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email <span class="text-muted"></span></label>
+                            <input type="email" class="form-control" id="email" placeholder="votre@email.com">
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone">Téléphone <span class="text-muted"></span></label>
+                            <input type="phone" class="form-control" id="phone" >
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block submitButton" type="submit">Envoyer</button>
+                    </form>
+                </div></div>
+        </div>
+    </   <div>
+
+{% endblock %}

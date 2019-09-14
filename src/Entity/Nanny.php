@@ -5,11 +5,18 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NannyRepository")
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="L'email que vous avez indiqué est déjà utilisé"
+ * )
  */
-class Nanny
+class Nanny implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -59,14 +66,21 @@ class Nanny
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Email(message="L'adresse mail est invalide", checkMX =true)
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
      */
     private $password;
+
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Les mots de passe doivent être identiques"))
+     */
+    public $confirm_password;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Child", mappedBy="nanny")
@@ -209,6 +223,7 @@ class Nanny
         return $this;
     }
 
+
     /**
      * @return Collection|child[]
      */
@@ -269,5 +284,19 @@ class Nanny
         }
 
         return $this;
+    }
+
+    public function getUsername()
+    {
+        return $this->getLastName;
+    }
+
+    public function eraseCredentials(){}
+
+    public function getSalt(){}
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
     }
 }

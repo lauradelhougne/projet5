@@ -6,16 +6,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Nanny;
 use App\Form\RegistrationType;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
 {
     /**
      * @Route("/registration", name="security_registration")
      */
-    public function nannyRegistration()
+    public function nannyRegistration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
         $user = new Nanny();
         $form = $this->createForm(RegistrationType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($hash);
+            $manager->persist($user);
+            $manager->flush();
+            return $this->render('security/connection.html.twig');
+        };
+
 
         return $this->render('security/nannyRegistration.html.twig', [
             'form' => $form->createView()
@@ -31,8 +44,19 @@ class SecurityController extends AbstractController
     }
 
 
+    /**
+     * @Route("/login", name="security_login")
+     */
+    public function login()
+    {
+        return $this->render('security/childListNanny.html.twig');
+    }
 
-
+    /**
+     * @Route("/logout", name="security_logout")
+     */
+    public function logout()
+    {}
 
     /**
      * @Route("/childListNanny", name="security_childListNanny")

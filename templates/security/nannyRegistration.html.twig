@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
@@ -53,42 +54,45 @@
                         <div class="card-body">
                             <h5 class="card-price text-center">NOUNOU</h5>
                             <hr>
-                            <form class="form-signin">
+                            {{ form_start(form) }}
                                 <div class="form-label-group">
-                                    <label for="inputUserame">Nom</label>
-                                    <input type="text" id="inputUserame" class="form-control" placeholder="Nom" required autofocus>
+                                    <label for="">Nom</label>
+                                    {{ form_widget(form.LastName) }}
                                 </div>
 
                                 <div class="form-label-group">
-                                    <label for="inputEmail">Prénom</label>
-                                    <input type="text" id="inputUserame" class="form-control" placeholder="Prénom" required autofocus>
+                                    <label for="">Prénom</label>
+                                    {{ form_widget(form.FirstName) }}
                                 </div>
                                 <div class="form-label-group">
-                                    <label for="lastName">Ville</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                                    <label for="">Ville</label>
+                                    {{ form_widget(form.City) }}
 
                                 </div>
 
                                 <div class="form-label-group">
-                                    <label for="email">Description <span class="text-muted"></span></label>
-                                    <textarea name="meal" class="form-control" rows="5" id="meal"></textarea>
+                                    <label for="">Description </label>
+                                    {{ form_widget(form.description) }}
 
                                 </div>
 
                                 <hr>
                                 <div class="form-label-group">
-                                    <label for="inputEmail" style="margin: 0;">Adresse mail</label>
-                                    <input type="email" id="inputEmail" class="form-control" placeholder="votre@mail.fr" required>
+                                    <label for="" style="margin: 0;">Adresse mail</label>
+                                    {{ form_errors(form.email) }}
+                                    {{ form_widget(form.email) }}
                                 </div>
 
                                 <div class="form-label-group">
-                                    <label for="inputPassword">Mot de passe</label>
-                                    <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                                    <label for="">Mot de passe</label>
+                                    {{ form_errors(form.password) }}
+                                    {{ form_widget(form.password) }}
                                 </div>
 
                                 <div class="form-label-group">
-                                    <label for="inputPassword">Confirmation mot de passe</label>
-                                    <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                                    <label for="">Confirmation mot de passe</label>
+                                    {{ form_errors(form.confirm_password) }}
+                                    {{ form_widget(form.confirm_password) }}
                                 </div>
 
 
@@ -98,14 +102,13 @@
                                     <label for="horns">J'atteste sur l'honneur être assistante maternelle agréée</label>
                                 </div>
 
-                                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Enregistrer</button>
-                            </form>
+                                <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase" >Enregistrer</button>
+                            {{ form_end(form) }}
                         </div>
                     </div>
                 </div>
-                <!-- Plus Tier -->
                 <div class="col-lg-5">
-                    <div class="card mb-4 mb-lg-0">a
+                    <div class="card mb-4 mb-lg-0">
                         <div class="card-body">
                             <h5 class="card-price text-center">PARENTS</h5>
                             <hr>
@@ -118,7 +121,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Pro Tier -->
             </div>
         </div>
     </section>

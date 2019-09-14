@@ -47,56 +47,73 @@
         </div>
     </header>
 
-    <div class="titleChild">Gérer mes demandes</div>
-    <section >
+    <section id="childListNanny">
+        <h4 class="titleChild">MES ENFANTS</h4>
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 ">
-                    <h4 style="color: #d6004f; margin-bottom: 1em;">Demande du 12/12/2019</h4>
-                    <form class="contactNanny" novalidate="">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <p>Nom de l'enfant:</p>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <p>Prénom de l'enfant:</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <p>Date de naissance ou terme :</p>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <p>Date début de garde souhaitée :</p>
-                            </div>
-                        </div>
-                        <p>Jour d'acceuil souhaités:</p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul>
+                        <li class="timeline-inverted">
+                            <div class="row align-items justify-content-center">
+                                <div class="timeline-image ">
+                                    <img class="rounded-circle img-fluid" src="{{ asset('img/child.png') }}" alt="">
+                                </div>
+                                <div class="timeline-panel col-md-3">
+                                    <div class="timeline-heading">
+                                        <h4 class="nameChild">Simon</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <a href="" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire le journal</a><br>
+                                        <a href="" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Modifier les informations</a>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <p>Nom du parent:</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <p>Prénom du parent:</p>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="row align-items justify-content-center">
+                                <div class="timeline-image ">
+                                    <img class="rounded-circle img-fluid" src="{{ asset('img/child.png') }}" alt="">
+                                </div>
+                                <div class="timeline-panel col-md-3">
+                                    <div class="timeline-heading">
+                                        <h4 class="nameChild">Marina</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <a href="" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire le journal</a><br>
+                                        <a href="" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Modifier les informations</a>
+
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="row align-items justify-content-center">
+                                <div class="timeline-image ">
+                                    <img class="rounded-circle img-fluid" src="{{ asset('img/child.png') }}" alt="">
+                                </div>
+                                <div class="timeline-panel col-md-3">
+                                    <div class="timeline-heading">
+                                        <h4 class="nameChild">Suzanne</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <a href="" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire le journal</a><br>
+                                        <a href="" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Modifier les informations</a>
 
-                        <p>Lien de parenté avec l'enfant :</p>
-
-                        <p>Email :</p>
-                        <p>Téléphone :</p>
+                                    </div>
 
 
-                        <div class="row justify-content-center ">
-                            <button class="btn btn-primary  submitButton col-md-3" type="submit" style="margin-right: 2em;">Accepter</button>
-                            <button class="btn btn-primary  submitButton col-md-3" type="submit">Refuser</button>
-                        </div>
-                    </form>
-                    <hr class="mb-4">
+                                </div>
+
+                            </div>
+
+                        </li>
+
+                    </ul>
                 </div>
             </div>
         </div>
-
     </section>
 
 {% endblock %}

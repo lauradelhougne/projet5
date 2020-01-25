@@ -17,13 +17,13 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('LastName', TextType::class, [
+            ->add('lastName', TextType::class, [
                 'attr' => ['class' => 'form-control']
             ])
-            ->add('FirstName', TextType::class, [
+            ->add('firstName', TextType::class, [
                 'attr' => ['class' => 'form-control']
             ])
-            ->add('City', TextType::class, [
+            ->add('city', TextType::class, [
                 'attr' => ['class' => 'form-control']
             ])
             ->add('description', TextareaType::class, [

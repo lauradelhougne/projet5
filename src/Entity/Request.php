@@ -24,12 +24,12 @@ class Request
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ChildLastName;
+    private $childLastName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ChildFirstName;
+    private $childFirstName;
 
     /**
      * @ORM\Column(type="datetime")
@@ -49,12 +49,12 @@ class Request
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ParentLastName;
+    private $parentLastName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ParentFirstName;
+    private $parentFirstName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -81,153 +81,212 @@ class Request
      */
     private $nanny;
 
-    public function getId(): ?int
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getDatetime(): ?\DateTimeInterface
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDatetime()
     {
         return $this->datetime;
     }
 
-    public function setDatetime(\DateTimeInterface $datetime): self
+    /**
+     * @param mixed $datetime
+     */
+    public function setDatetime($datetime): void
     {
         $this->datetime = $datetime;
-
-        return $this;
     }
 
-    public function getChildLastName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getChildLastName()
     {
-        return $this->ChildLastName;
+        return $this->childLastName;
     }
 
-    public function setChildLastName(string $ChildLastName): self
+    /**
+     * @param mixed $childLastName
+     */
+    public function setChildLastName($childLastName): void
     {
-        $this->ChildLastName = $ChildLastName;
-
-        return $this;
+        $this->childLastName = $childLastName;
     }
 
-    public function getChildFirstName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getChildFirstName()
     {
-        return $this->ChildFirstName;
+        return $this->childFirstName;
     }
 
-    public function setChildFirstName(string $ChildFirstName): self
+    /**
+     * @param mixed $childFirstName
+     */
+    public function setChildFirstName($childFirstName): void
     {
-        $this->ChildFirstName = $ChildFirstName;
-
-        return $this;
+        $this->childFirstName = $childFirstName;
     }
 
-    public function getDateBirth(): ?\DateTimeInterface
+    /**
+     * @return mixed
+     */
+    public function getDateBirth()
     {
         return $this->dateBirth;
     }
 
-    public function setDateBirth(\DateTimeInterface $dateBirth): self
+    /**
+     * @param mixed $dateBirth
+     */
+    public function setDateBirth($dateBirth): void
     {
         $this->dateBirth = $dateBirth;
-
-        return $this;
     }
 
-    public function getStartDate(): ?\DateTimeInterface
+    /**
+     * @return mixed
+     */
+    public function getStartDate()
     {
         return $this->startDate;
     }
 
-    public function setStartDate(\DateTimeInterface $startDate): self
+    /**
+     * @param mixed $startDate
+     */
+    public function setStartDate($startDate): void
     {
         $this->startDate = $startDate;
-
-        return $this;
     }
 
-    public function getDaysChildcare(): ?string
+    /**
+     * @return mixed
+     */
+    public function getDaysChildcare()
     {
         return $this->daysChildcare;
     }
 
-    public function setDaysChildcare(string $daysChildcare): self
+    /**
+     * @param mixed $daysChildcare
+     */
+    public function setDaysChildcare($daysChildcare): void
     {
         $this->daysChildcare = $daysChildcare;
-
-        return $this;
     }
 
-    public function getParentLastName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getParentLastName()
     {
-        return $this->ParentLastName;
+        return $this->parentLastName;
     }
 
-    public function setParentLastName(string $ParentLastName): self
+    /**
+     * @param mixed $parentLastName
+     */
+    public function setParentLastName($parentLastName): void
     {
-        $this->ParentLastName = $ParentLastName;
-
-        return $this;
+        $this->parentLastName = $parentLastName;
     }
 
-    public function getParentFirstName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getParentFirstName()
     {
-        return $this->ParentFirstName;
+        return $this->parentFirstName;
     }
 
-    public function setParentFirstName(string $ParentFirstName): self
+    /**
+     * @param mixed $parentFirstName
+     */
+    public function setParentFirstName($parentFirstName): void
     {
-        $this->ParentFirstName = $ParentFirstName;
-
-        return $this;
+        $this->parentFirstName = $parentFirstName;
     }
 
-    public function getRelation(): ?string
+    /**
+     * @return mixed
+     */
+    public function getRelation()
     {
         return $this->relation;
     }
 
-    public function setRelation(string $relation): self
+    /**
+     * @param mixed $relation
+     */
+    public function setRelation($relation): void
     {
         $this->relation = $relation;
-
-        return $this;
     }
 
-    public function getEmail(): ?string
+    /**
+     * @return mixed
+     */
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
-    public function getPhone(): ?string
+    /**
+     * @return mixed
+     */
+    public function getPhone()
     {
         return $this->phone;
     }
 
-    public function setPhone(string $phone): self
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone): void
     {
         $this->phone = $phone;
-
-        return $this;
     }
 
-    public function getMessage(): ?string
+    /**
+     * @return mixed
+     */
+    public function getMessage()
     {
         return $this->message;
     }
 
-    public function setMessage(string $message): self
+    /**
+     * @param mixed $message
+     */
+    public function setMessage($message): void
     {
         $this->message = $message;
-
-        return $this;
     }
 
     public function getNanny(): ?nanny

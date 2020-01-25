@@ -21,27 +21,27 @@ class Child
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $LastName;
+    private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $FirstName;
+    private $firstName;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $BirthDate;
+    private $birthDate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $BirthPlace;
+    private $birthPlace;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Address;
+    private $address;
 
     /**
      * @ORM\Column(type="string", length=5, nullable=true)
@@ -51,17 +51,17 @@ class Child
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $City;
+    private $city;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Parent1LastName;
+    private $parent1LastName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Parent1FirstName;
+    private $parent1FirstName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -201,17 +201,17 @@ class Child
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $FoodAllergy;
+    private $foodAllergy;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $DrugAllergy;
+    private $drugAllergy;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $Asthme;
+    private $asthme;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -242,474 +242,6 @@ class Child
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->LastName;
-    }
-
-    public function setLastName(string $LastName): self
-    {
-        $this->LastName = $LastName;
-
-        return $this;
-    }
-
-    public function getFirstName(): ?string
-    {
-        return $this->FirstName;
-    }
-
-    public function setFirstName(string $FirstName): self
-    {
-        $this->FirstName = $FirstName;
-
-        return $this;
-    }
-
-    public function getBirthDate(): ?\DateTimeInterface
-    {
-        return $this->BirthDate;
-    }
-
-    public function setBirthDate(\DateTimeInterface $BirthDate): self
-    {
-        $this->BirthDate = $BirthDate;
-
-        return $this;
-    }
-
-    public function getBirthPlace(): ?string
-    {
-        return $this->BirthPlace;
-    }
-
-    public function setBirthPlace(?string $BirthPlace): self
-    {
-        $this->BirthPlace = $BirthPlace;
-
-        return $this;
-    }
-
-    public function getAddress(): ?string
-    {
-        return $this->Address;
-    }
-
-    public function setAddress(?string $Address): self
-    {
-        $this->Address = $Address;
-
-        return $this;
-    }
-
-    public function getPostal(): ?string
-    {
-        return $this->postal;
-    }
-
-    public function setPostal(?string $postal): self
-    {
-        $this->postal = $postal;
-
-        return $this;
-    }
-
-    public function getCity(): ?string
-    {
-        return $this->City;
-    }
-
-    public function setCity(?string $City): self
-    {
-        $this->City = $City;
-
-        return $this;
-    }
-
-    public function getParent1LastName(): ?string
-    {
-        return $this->Parent1LastName;
-    }
-
-    public function setParent1LastName(?string $Parent1LastName): self
-    {
-        $this->Parent1LastName = $Parent1LastName;
-
-        return $this;
-    }
-
-    public function getParent1FirstName(): ?string
-    {
-        return $this->Parent1FirstName;
-    }
-
-    public function setParent1FirstName(?string $Parent1FirstName): self
-    {
-        $this->Parent1FirstName = $Parent1FirstName;
-
-        return $this;
-    }
-
-    public function getParent1FamilySituation(): ?string
-    {
-        return $this->parent1FamilySituation;
-    }
-
-    public function setParent1FamilySituation(?string $parent1FamilySituation): self
-    {
-        $this->parent1FamilySituation = $parent1FamilySituation;
-
-        return $this;
-    }
-
-    public function getParent1Address(): ?string
-    {
-        return $this->parent1Address;
-    }
-
-    public function setParent1Address(?string $parent1Address): self
-    {
-        $this->parent1Address = $parent1Address;
-
-        return $this;
-    }
-
-    public function getParent1Postal(): ?string
-    {
-        return $this->parent1Postal;
-    }
-
-    public function setParent1Postal(?string $parent1Postal): self
-    {
-        $this->parent1Postal = $parent1Postal;
-
-        return $this;
-    }
-
-    public function getParent1City(): ?string
-    {
-        return $this->parent1City;
-    }
-
-    public function setParent1City(?string $parent1City): self
-    {
-        $this->parent1City = $parent1City;
-
-        return $this;
-    }
-
-    public function getParent1Phone(): ?string
-    {
-        return $this->parent1Phone;
-    }
-
-    public function setParent1Phone(?string $parent1Phone): self
-    {
-        $this->parent1Phone = $parent1Phone;
-
-        return $this;
-    }
-
-    public function getParent1Profession(): ?string
-    {
-        return $this->parent1Profession;
-    }
-
-    public function setParent1Profession(?string $parent1Profession): self
-    {
-        $this->parent1Profession = $parent1Profession;
-
-        return $this;
-    }
-
-    public function getParent2LastName(): ?string
-    {
-        return $this->parent2LastName;
-    }
-
-    public function setParent2LastName(?string $parent2LastName): self
-    {
-        $this->parent2LastName = $parent2LastName;
-
-        return $this;
-    }
-
-    public function getParent2FirstName(): ?string
-    {
-        return $this->parent2FirstName;
-    }
-
-    public function setParent2FirstName(?string $parent2FirstName): self
-    {
-        $this->parent2FirstName = $parent2FirstName;
-
-        return $this;
-    }
-
-    public function getParent2FamilySituation(): ?string
-    {
-        return $this->parent2FamilySituation;
-    }
-
-    public function setParent2FamilySituation(?string $parent2FamilySituation): self
-    {
-        $this->parent2FamilySituation = $parent2FamilySituation;
-
-        return $this;
-    }
-
-    public function getParent2Address(): ?string
-    {
-        return $this->parent2Address;
-    }
-
-    public function setParent2Address(?string $parent2Address): self
-    {
-        $this->parent2Address = $parent2Address;
-
-        return $this;
-    }
-
-    public function getParent2Postal(): ?string
-    {
-        return $this->parent2Postal;
-    }
-
-    public function setParent2Postal(?string $parent2Postal): self
-    {
-        $this->parent2Postal = $parent2Postal;
-
-        return $this;
-    }
-
-    public function getParent2City(): ?string
-    {
-        return $this->parent2City;
-    }
-
-    public function setParent2City(?string $parent2City): self
-    {
-        $this->parent2City = $parent2City;
-
-        return $this;
-    }
-
-    public function getParent2Phone(): ?string
-    {
-        return $this->parent2Phone;
-    }
-
-    public function setParent2Phone(?string $parent2Phone): self
-    {
-        $this->parent2Phone = $parent2Phone;
-
-        return $this;
-    }
-
-    public function getParent2Profession(): ?string
-    {
-        return $this->parent2Profession;
-    }
-
-    public function setParent2Profession(?string $parent2Profession): self
-    {
-        $this->parent2Profession = $parent2Profession;
-
-        return $this;
-    }
-
-    public function getPerson1LastName(): ?string
-    {
-        return $this->person1LastName;
-    }
-
-    public function setPerson1LastName(?string $person1LastName): self
-    {
-        $this->person1LastName = $person1LastName;
-
-        return $this;
-    }
-
-    public function getPerson1FirstName(): ?string
-    {
-        return $this->person1FirstName;
-    }
-
-    public function setPerson1FirstName(?string $person1FirstName): self
-    {
-        $this->person1FirstName = $person1FirstName;
-
-        return $this;
-    }
-
-    public function getPerson1Relation(): ?string
-    {
-        return $this->person1Relation;
-    }
-
-    public function setPerson1Relation(?string $person1Relation): self
-    {
-        $this->person1Relation = $person1Relation;
-
-        return $this;
-    }
-
-    public function getPerson1Phone(): ?string
-    {
-        return $this->person1Phone;
-    }
-
-    public function setPerson1Phone(?string $person1Phone): self
-    {
-        $this->person1Phone = $person1Phone;
-
-        return $this;
-    }
-
-    public function getPerson1Address(): ?string
-    {
-        return $this->person1Address;
-    }
-
-    public function setPerson1Address(?string $person1Address): self
-    {
-        $this->person1Address = $person1Address;
-
-        return $this;
-    }
-
-    public function getPerson2LastName(): ?string
-    {
-        return $this->person2LastName;
-    }
-
-    public function setPerson2LastName(?string $person2LastName): self
-    {
-        $this->person2LastName = $person2LastName;
-
-        return $this;
-    }
-
-    public function getPerson2FirstName(): ?string
-    {
-        return $this->person2FirstName;
-    }
-
-    public function setPerson2FirstName(?string $person2FirstName): self
-    {
-        $this->person2FirstName = $person2FirstName;
-
-        return $this;
-    }
-
-    public function getPerson2Relation(): ?string
-    {
-        return $this->person2Relation;
-    }
-
-    public function setPerson2Relation(?string $person2Relation): self
-    {
-        $this->person2Relation = $person2Relation;
-
-        return $this;
-    }
-
-    public function getPerson2Phone(): ?string
-    {
-        return $this->person2Phone;
-    }
-
-    public function setPerson2Phone(?string $person2Phone): self
-    {
-        $this->person2Phone = $person2Phone;
-
-        return $this;
-    }
-
-    public function getPerson2Address(): ?string
-    {
-        return $this->person2Address;
-    }
-
-    public function setPerson2Address(?string $person2Address): self
-    {
-        $this->person2Address = $person2Address;
-
-        return $this;
-    }
-
-    public function getDoctorName(): ?string
-    {
-        return $this->doctorName;
-    }
-
-    public function setDoctorName(?string $doctorName): self
-    {
-        $this->doctorName = $doctorName;
-
-        return $this;
-    }
-
-    public function getDoctorAddress(): ?string
-    {
-        return $this->doctorAddress;
-    }
-
-    public function setDoctorAddress(?string $doctorAddress): self
-    {
-        $this->doctorAddress = $doctorAddress;
-
-        return $this;
-    }
-
-    public function getDoctorPhone(): ?string
-    {
-        return $this->doctorPhone;
-    }
-
-    public function setDoctorPhone(?string $doctorPhone): self
-    {
-        $this->doctorPhone = $doctorPhone;
-
-        return $this;
-    }
-
-    public function getFoodAllergy(): ?bool
-    {
-        return $this->FoodAllergy;
-    }
-
-    public function setFoodAllergy(?bool $FoodAllergy): self
-    {
-        $this->FoodAllergy = $FoodAllergy;
-
-        return $this;
-    }
-
-    public function getDrugAllergy(): ?bool
-    {
-        return $this->DrugAllergy;
-    }
-
-    public function setDrugAllergy(?bool $DrugAllergy): self
-    {
-        $this->DrugAllergy = $DrugAllergy;
-
-        return $this;
-    }
-
-    public function getAsthme(): ?bool
-    {
-        return $this->Asthme;
-    }
-
-    public function setAsthme(?bool $Asthme): self
-    {
-        $this->Asthme = $Asthme;
-
-        return $this;
     }
 
     public function getNotesAllergy(): ?string
@@ -746,6 +278,629 @@ class Child
         $this->nanny = $nanny;
 
         return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * @param mixed $birthDate
+     */
+    public function setBirthDate($birthDate): void
+    {
+        $this->birthDate = $birthDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBirthPlace()
+    {
+        return $this->birthPlace;
+    }
+
+    /**
+     * @param mixed $birthPlace
+     */
+    public function setBirthPlace($birthPlace): void
+    {
+        $this->birthPlace = $birthPlace;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address): void
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostal()
+    {
+        return $this->postal;
+    }
+
+    /**
+     * @param mixed $postal
+     */
+    public function setPostal($postal): void
+    {
+        $this->postal = $postal;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city): void
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent1LastName()
+    {
+        return $this->parent1LastName;
+    }
+
+    /**
+     * @param mixed $parent1LastName
+     */
+    public function setParent1LastName($parent1LastName): void
+    {
+        $this->parent1LastName = $parent1LastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent1FirstName()
+    {
+        return $this->parent1FirstName;
+    }
+
+    /**
+     * @param mixed $parent1FirstName
+     */
+    public function setParent1FirstName($parent1FirstName): void
+    {
+        $this->parent1FirstName = $parent1FirstName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent1FamilySituation()
+    {
+        return $this->parent1FamilySituation;
+    }
+
+    /**
+     * @param mixed $parent1FamilySituation
+     */
+    public function setParent1FamilySituation($parent1FamilySituation): void
+    {
+        $this->parent1FamilySituation = $parent1FamilySituation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent1Address()
+    {
+        return $this->parent1Address;
+    }
+
+    /**
+     * @param mixed $parent1Address
+     */
+    public function setParent1Address($parent1Address): void
+    {
+        $this->parent1Address = $parent1Address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent1Postal()
+    {
+        return $this->parent1Postal;
+    }
+
+    /**
+     * @param mixed $parent1Postal
+     */
+    public function setParent1Postal($parent1Postal): void
+    {
+        $this->parent1Postal = $parent1Postal;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent1City()
+    {
+        return $this->parent1City;
+    }
+
+    /**
+     * @param mixed $parent1City
+     */
+    public function setParent1City($parent1City): void
+    {
+        $this->parent1City = $parent1City;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent1Phone()
+    {
+        return $this->parent1Phone;
+    }
+
+    /**
+     * @param mixed $parent1Phone
+     */
+    public function setParent1Phone($parent1Phone): void
+    {
+        $this->parent1Phone = $parent1Phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent1Profession()
+    {
+        return $this->parent1Profession;
+    }
+
+    /**
+     * @param mixed $parent1Profession
+     */
+    public function setParent1Profession($parent1Profession): void
+    {
+        $this->parent1Profession = $parent1Profession;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent2LastName()
+    {
+        return $this->parent2LastName;
+    }
+
+    /**
+     * @param mixed $parent2LastName
+     */
+    public function setParent2LastName($parent2LastName): void
+    {
+        $this->parent2LastName = $parent2LastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent2FirstName()
+    {
+        return $this->parent2FirstName;
+    }
+
+    /**
+     * @param mixed $parent2FirstName
+     */
+    public function setParent2FirstName($parent2FirstName): void
+    {
+        $this->parent2FirstName = $parent2FirstName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent2FamilySituation()
+    {
+        return $this->parent2FamilySituation;
+    }
+
+    /**
+     * @param mixed $parent2FamilySituation
+     */
+    public function setParent2FamilySituation($parent2FamilySituation): void
+    {
+        $this->parent2FamilySituation = $parent2FamilySituation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent2Address()
+    {
+        return $this->parent2Address;
+    }
+
+    /**
+     * @param mixed $parent2Address
+     */
+    public function setParent2Address($parent2Address): void
+    {
+        $this->parent2Address = $parent2Address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent2Postal()
+    {
+        return $this->parent2Postal;
+    }
+
+    /**
+     * @param mixed $parent2Postal
+     */
+    public function setParent2Postal($parent2Postal): void
+    {
+        $this->parent2Postal = $parent2Postal;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent2City()
+    {
+        return $this->parent2City;
+    }
+
+    /**
+     * @param mixed $parent2City
+     */
+    public function setParent2City($parent2City): void
+    {
+        $this->parent2City = $parent2City;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent2Phone()
+    {
+        return $this->parent2Phone;
+    }
+
+    /**
+     * @param mixed $parent2Phone
+     */
+    public function setParent2Phone($parent2Phone): void
+    {
+        $this->parent2Phone = $parent2Phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent2Profession()
+    {
+        return $this->parent2Profession;
+    }
+
+    /**
+     * @param mixed $parent2Profession
+     */
+    public function setParent2Profession($parent2Profession): void
+    {
+        $this->parent2Profession = $parent2Profession;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson1LastName()
+    {
+        return $this->person1LastName;
+    }
+
+    /**
+     * @param mixed $person1LastName
+     */
+    public function setPerson1LastName($person1LastName): void
+    {
+        $this->person1LastName = $person1LastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson1FirstName()
+    {
+        return $this->person1FirstName;
+    }
+
+    /**
+     * @param mixed $person1FirstName
+     */
+    public function setPerson1FirstName($person1FirstName): void
+    {
+        $this->person1FirstName = $person1FirstName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson1Relation()
+    {
+        return $this->person1Relation;
+    }
+
+    /**
+     * @param mixed $person1Relation
+     */
+    public function setPerson1Relation($person1Relation): void
+    {
+        $this->person1Relation = $person1Relation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson1Phone()
+    {
+        return $this->person1Phone;
+    }
+
+    /**
+     * @param mixed $person1Phone
+     */
+    public function setPerson1Phone($person1Phone): void
+    {
+        $this->person1Phone = $person1Phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson1Address()
+    {
+        return $this->person1Address;
+    }
+
+    /**
+     * @param mixed $person1Address
+     */
+    public function setPerson1Address($person1Address): void
+    {
+        $this->person1Address = $person1Address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson2Relation()
+    {
+        return $this->person2Relation;
+    }
+
+    /**
+     * @param mixed $person2Relation
+     */
+    public function setPerson2Relation($person2Relation): void
+    {
+        $this->person2Relation = $person2Relation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson2Phone()
+    {
+        return $this->person2Phone;
+    }
+
+    /**
+     * @param mixed $person2Phone
+     */
+    public function setPerson2Phone($person2Phone): void
+    {
+        $this->person2Phone = $person2Phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson2Address()
+    {
+        return $this->person2Address;
+    }
+
+    /**
+     * @param mixed $person2Address
+     */
+    public function setPerson2Address($person2Address): void
+    {
+        $this->person2Address = $person2Address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDoctorName()
+    {
+        return $this->doctorName;
+    }
+
+    /**
+     * @param mixed $doctorName
+     */
+    public function setDoctorName($doctorName): void
+    {
+        $this->doctorName = $doctorName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDoctorAddress()
+    {
+        return $this->doctorAddress;
+    }
+
+    /**
+     * @param mixed $doctorAddress
+     */
+    public function setDoctorAddress($doctorAddress): void
+    {
+        $this->doctorAddress = $doctorAddress;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDoctorPhone()
+    {
+        return $this->doctorPhone;
+    }
+
+    /**
+     * @param mixed $doctorPhone
+     */
+    public function setDoctorPhone($doctorPhone): void
+    {
+        $this->doctorPhone = $doctorPhone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFoodAllergy()
+    {
+        return $this->foodAllergy;
+    }
+
+    /**
+     * @param mixed $foodAllergy
+     */
+    public function setFoodAllergy($foodAllergy): void
+    {
+        $this->foodAllergy = $foodAllergy;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDrugAllergy()
+    {
+        return $this->drugAllergy;
+    }
+
+    /**
+     * @param mixed $drugAllergy
+     */
+    public function setDrugAllergy($drugAllergy): void
+    {
+        $this->drugAllergy = $drugAllergy;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAsthme()
+    {
+        return $this->asthme;
+    }
+
+    /**
+     * @param mixed $asthme
+     */
+    public function setAsthme($asthme): void
+    {
+        $this->asthme = $asthme;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson2LastName()
+    {
+        return $this->person2LastName;
+    }
+
+    /**
+     * @param mixed $person2LastName
+     */
+    public function setPerson2LastName($person2LastName): void
+    {
+        $this->person2LastName = $person2LastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson2FirstName()
+    {
+        return $this->person2FirstName;
+    }
+
+    /**
+     * @param mixed $person2FirstName
+     */
+    public function setPerson2FirstName($person2FirstName): void
+    {
+        $this->person2FirstName = $person2FirstName;
     }
 
     /**

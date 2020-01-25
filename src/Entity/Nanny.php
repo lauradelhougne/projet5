@@ -28,17 +28,17 @@ class Nanny implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $LastName;
+    private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $FirstName;
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Address;
+    private $address;
 
     /**
      * @ORM\Column(type="string", length=5, nullable=true)
@@ -48,17 +48,17 @@ class Nanny implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $City;
+    private $city;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
      */
-    private $Phone;
+    private $phone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Diploma;
+    private $diploma;
 
     /**
      * @ORM\Column(type="text")
@@ -85,7 +85,7 @@ class Nanny implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Child", mappedBy="nanny")
      */
-    private $Child;
+    private $child;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Request", mappedBy="nanny")
@@ -105,36 +105,36 @@ class Nanny implements UserInterface
 
     public function getLastName(): ?string
     {
-        return $this->LastName;
+        return $this->lastName;
     }
 
-    public function setLastName(string $LastName): self
+    public function setLastName(string $lastName): self
     {
-        $this->LastName = $LastName;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
     public function getFirstName(): ?string
     {
-        return $this->FirstName;
+        return $this->firstName;
     }
 
-    public function setFirstName(string $FirstName): self
+    public function setFirstName(string $firstName): self
     {
-        $this->FirstName = $FirstName;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
     public function getAddress(): ?string
     {
-        return $this->Address;
+        return $this->address;
     }
 
-    public function setAddress(?string $Address): self
+    public function setAddress(?string $address): self
     {
-        $this->Address = $Address;
+        $this->address = $address;
 
         return $this;
     }
@@ -153,36 +153,36 @@ class Nanny implements UserInterface
 
     public function getCity(): ?string
     {
-        return $this->City;
+        return $this->city;
     }
 
-    public function setCity(string $City): self
+    public function setCity(string $city): self
     {
-        $this->City = $City;
+        $this->city = $city;
 
         return $this;
     }
 
     public function getPhone(): ?string
     {
-        return $this->Phone;
+        return $this->phone;
     }
 
-    public function setPhone(?string $Phone): self
+    public function setPhone(?string $phone): self
     {
-        $this->Phone = $Phone;
+        $this->phone = $phone;
 
         return $this;
     }
 
     public function getDiploma(): ?string
     {
-        return $this->Diploma;
+        return $this->diploma;
     }
 
-    public function setDiploma(?string $Diploma): self
+    public function setDiploma(?string $diploma): self
     {
-        $this->Diploma = $Diploma;
+        $this->diploma = $diploma;
 
         return $this;
     }
@@ -229,23 +229,23 @@ class Nanny implements UserInterface
      */
     public function getChild(): Collection
     {
-        return $this->Child;
+        return $this->child;
     }
 
-    public function addChild(child $child): self
+    public function addChild(Child $child): self
     {
-        if (!$this->Child->contains($child)) {
-            $this->Child[] = $child;
+        if (!$this->child->contains($child)) {
+            $this->child[] = $child;
             $child->setNanny($this);
         }
 
         return $this;
     }
 
-    public function removeChild(child $child): self
+    public function removeChild(Child $child): self
     {
-        if ($this->Child->contains($child)) {
-            $this->Child->removeElement($child);
+        if ($this->child->contains($child)) {
+            $this->child->removeElement($child);
             // set the owning side to null (unless already changed)
             if ($child->getNanny() === $this) {
                 $child->setNanny(null);

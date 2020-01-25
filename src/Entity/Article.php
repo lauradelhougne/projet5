@@ -56,16 +56,26 @@ class Article
      */
     private $child;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return \DateTimeInterface|null
+     */
     public function getDatetime(): ?\DateTimeInterface
     {
         return $this->datetime;
     }
 
+    /**
+     * @param \DateTimeInterface $datetime
+     * @return Article
+     */
     public function setDatetime(\DateTimeInterface $datetime): self
     {
         $this->datetime = $datetime;
@@ -73,11 +83,18 @@ class Article
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getMeal(): ?string
     {
         return $this->meal;
     }
 
+    /**
+     * @param string $meal
+     * @return Article
+     */
     public function setMeal(string $meal): self
     {
         $this->meal = $meal;
@@ -85,11 +102,18 @@ class Article
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getSleep(): ?string
     {
         return $this->sleep;
     }
 
+    /**
+     * @param string $sleep
+     * @return Article
+     */
     public function setSleep(string $sleep): self
     {
         $this->sleep = $sleep;
@@ -97,11 +121,18 @@ class Article
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLayers(): ?string
     {
         return $this->layers;
     }
 
+    /**
+     * @param string $layers
+     * @return Article
+     */
     public function setLayers(string $layers): self
     {
         $this->layers = $layers;
@@ -109,11 +140,18 @@ class Article
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getHealth(): ?string
     {
         return $this->health;
     }
 
+    /**
+     * @param string $health
+     * @return Article
+     */
     public function setHealth(string $health): self
     {
         $this->health = $health;
@@ -121,11 +159,18 @@ class Article
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getActivity(): ?string
     {
         return $this->activity;
     }
 
+    /**
+     * @param string $activity
+     * @return Article
+     */
     public function setActivity(string $activity): self
     {
         $this->activity = $activity;
@@ -133,11 +178,18 @@ class Article
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getNotes(): ?string
     {
         return $this->notes;
     }
 
+    /**
+     * @param string $notes
+     * @return Article
+     */
     public function setNotes(string $notes): self
     {
         $this->notes = $notes;
@@ -145,11 +197,18 @@ class Article
         return $this;
     }
 
+    /**
+     * @return child|null
+     */
     public function getChild(): ?child
     {
         return $this->child;
     }
 
+    /**
+     * @param child|null $child
+     * @return Article
+     */
     public function setChild(?child $child): self
     {
         $this->child = $child;

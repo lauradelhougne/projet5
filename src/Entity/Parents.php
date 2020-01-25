@@ -21,17 +21,17 @@ class Parents
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $LastName;
+    private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $FirstName;
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Relation;
+    private $relation;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -63,76 +63,100 @@ class Parents
         return $this->id;
     }
 
-    public function getLastName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getLastName()
     {
-        return $this->LastName;
+        return $this->lastName;
     }
 
-    public function setLastName(string $LastName): self
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName): void
     {
-        $this->LastName = $LastName;
-
-        return $this;
+        $this->lastName = $lastName;
     }
 
-    public function getFirstName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
     {
-        return $this->FirstName;
+        return $this->firstName;
     }
 
-    public function setFirstName(string $FirstName): self
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName): void
     {
-        $this->FirstName = $FirstName;
-
-        return $this;
+        $this->firstName = $firstName;
     }
 
-    public function getRelation(): ?string
+    /**
+     * @return mixed
+     */
+    public function getRelation()
     {
-        return $this->Relation;
+        return $this->relation;
     }
 
-    public function setRelation(string $Relation): self
+    /**
+     * @param mixed $relation
+     */
+    public function setRelation($relation): void
     {
-        $this->Relation = $Relation;
-
-        return $this;
+        $this->relation = $relation;
     }
 
-    public function getEmail(): ?string
+    /**
+     * @return mixed
+     */
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
-    public function getPhone(): ?string
+    /**
+     * @return mixed
+     */
+    public function getPhone()
     {
         return $this->phone;
     }
 
-    public function setPhone(string $phone): self
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone): void
     {
         $this->phone = $phone;
-
-        return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * @return mixed
+     */
+    public function getPassword()
     {
         return $this->password;
     }
 
-    public function setPassword(?string $password): self
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
     {
         $this->password = $password;
-
-        return $this;
     }
 
     /**

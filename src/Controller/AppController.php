@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\NannyRepository;
+use App\Entity\Nanny;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -32,8 +34,10 @@ class AppController extends AbstractController
      */
     public function nannyList()
     {
+        $em = $this->getDoctrine()->getManager();
+        $listNanny = $em->getRepository(Nanny::class)->findAll();
         return $this->render('app/nannyList.html.twig', [
-            'controller_name' => 'AppController',
+            'listNanny' => $listNanny,
         ]);
     }
 

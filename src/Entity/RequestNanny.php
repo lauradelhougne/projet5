@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\RequestRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\RequestNannyRepository")
  */
-class Request
+class RequestNanny
 {
     /**
      * @ORM\Id()
@@ -16,9 +16,6 @@ class Request
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
     private $datetime;
 
     /**
@@ -42,7 +39,7 @@ class Request
     private $startDate;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="array", length=255)
      */
     private $daysChildcare;
 
@@ -294,7 +291,7 @@ class Request
         return $this->nanny;
     }
 
-    public function setNanny(?nanny $nanny): self
+    public function setNanny(?Nanny $nanny): self
     {
         $this->nanny = $nanny;
 

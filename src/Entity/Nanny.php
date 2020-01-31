@@ -88,7 +88,7 @@ class Nanny implements UserInterface
     private $child;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Request", mappedBy="nanny")
+     * @ORM\OneToMany(targetEntity="App\Entity\RequestNanny", mappedBy="nanny")
      */
     private $requests;
 
@@ -225,7 +225,7 @@ class Nanny implements UserInterface
 
 
     /**
-     * @return Collection|child[]
+     * @return Collection|Child[]
      */
     public function getChild(): Collection
     {
@@ -256,14 +256,14 @@ class Nanny implements UserInterface
     }
 
     /**
-     * @return Collection|Request[]
+     * @return Collection|RequestNanny[]
      */
     public function getRequests(): Collection
     {
         return $this->requests;
     }
 
-    public function addRequest(Request $request): self
+    public function addRequest(RequestNanny $request): self
     {
         if (!$this->requests->contains($request)) {
             $this->requests[] = $request;
@@ -273,7 +273,7 @@ class Nanny implements UserInterface
         return $this;
     }
 
-    public function removeRequest(Request $request): self
+    public function removeRequest(RequestNanny $request): self
     {
         if ($this->requests->contains($request)) {
             $this->requests->removeElement($request);

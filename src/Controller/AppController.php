@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
-use App\Repository\NannyRepository;
+use App\Entity\RequestNanny;
+use Symfony\Component\HttpFoundation\Request;
+use App\Form\RequestNannyType;
 use App\Entity\Nanny;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,12 +44,27 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/contactNanny", name="contactNanny")
+     * @Route("/contactNanny/{id}", name="contactNanny")
      */
-    public function contactNanny()
+    public function contactNanny(Request $request, $id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $nanny = $em->getRepository(Nanny::class)->findBy(['id' => $id]);
+
+        $requestNanny = new RequestNanny();
+        $requestNanny->setNanny($nanny[0]);
+
+        $form = $this->createForm(RequestNannyType::class, $requestNanny);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($requestNanny);
+
+            $em->flush();
+        }
+
         return $this->render('app/contactNanny.html.twig', [
-            'controller_name' => 'AppController',
+            'form' => $form->createView(),
         ]);
     }
 

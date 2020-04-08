@@ -52,7 +52,8 @@ class AppController extends AbstractController
         $nanny = $em->getRepository(Nanny::class)->findBy(['id' => $id]);
 
         $requestNanny = new RequestNanny();
-        $requestNanny->setNanny($nanny[0]);
+        $requestNanny->setNannyId($nanny[0]->getId());
+        $requestNanny->setDatetime();
 
         $form = $this->createForm(RequestNannyType::class, $requestNanny);
 

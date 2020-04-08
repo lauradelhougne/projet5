@@ -20,7 +20,7 @@
                         <a id="inscription" class="nav-link js-scroll-trigger" href="{{ path('security_registration') }}" >S'inscrire</a>
                     </li>
                     <li class="nav-item">
-                        <a id="connection" class="nav-link js-scroll-trigger" href="{{ path('security_connection') }}" >Connexion</a>
+                        <a id="connection" class="nav-link js-scroll-trigger" href="{{ path('security_login') }}" >Connexion</a>
                     </li>
 
                 </ul>
@@ -55,12 +55,12 @@
                             <form action="{{ path('security_login') }}" method="POST" class="form-signin">
                                 <div class="form-label-group">
                                     <label for="inputEmail">Adresse mail</label>
-                                    <input type="email" id="inputEmail" class="form-control" placeholder="votre@mail.fr" required_name="_username">
+                                    <input type="email" id="inputEmail" class="form-control" placeholder="votre@mail.fr" name="_username">
                                 </div>
 
                                 <div class="form-label-group">
                                     <label for="inputPassword">Mot de passe</label>
-                                    <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required_name="_password" >
+                                    <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" name="_password" >
                                 </div>
 
                                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Se connecter</button>
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Plus Tier -->
+
                 <div class="col-lg-6">
                     <div class="card mb-4 mb-lg-0">
                         <div class="card-body">
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Pro Tier -->
+
             </div>
         </div>
     </section>

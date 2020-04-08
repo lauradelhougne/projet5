@@ -209,7 +209,7 @@ class Nanny implements UserInterface
 
     public function getUsername()
     {
-        return $this->getLastName();
+        return $this->getEmail();
     }
 
     public function eraseCredentials(){}

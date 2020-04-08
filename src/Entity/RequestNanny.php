@@ -16,6 +16,14 @@ class RequestNanny
      */
     private $id;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nannyId;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
     private $datetime;
 
     /**
@@ -74,11 +82,6 @@ class RequestNanny
     private $message;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\nanny", inversedBy="requests")
-     */
-    private $nanny;
-
-    /**
      * @return mixed
      */
     public function getId()
@@ -97,6 +100,22 @@ class RequestNanny
     /**
      * @return mixed
      */
+    public function getNannyId()
+    {
+        return $this->nannyId;
+    }
+
+    /**
+     * @param mixed $nannyId
+     */
+    public function setNannyId($nannyId): void
+    {
+        $this->nannyId = $nannyId;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getDatetime()
     {
         return $this->datetime;
@@ -105,9 +124,9 @@ class RequestNanny
     /**
      * @param mixed $datetime
      */
-    public function setDatetime($datetime): void
+    public function setDatetime(): void
     {
-        $this->datetime = $datetime;
+        $this->datetime = new \DateTime('now');
     }
 
     /**
@@ -284,17 +303,5 @@ class RequestNanny
     public function setMessage($message): void
     {
         $this->message = $message;
-    }
-
-    public function getNanny(): ?nanny
-    {
-        return $this->nanny;
-    }
-
-    public function setNanny(?Nanny $nanny): self
-    {
-        $this->nanny = $nanny;
-
-        return $this;
     }
 }

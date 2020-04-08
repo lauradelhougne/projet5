@@ -82,22 +82,6 @@ class Nanny implements UserInterface
      */
     public $confirm_password;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Child", mappedBy="nanny")
-     */
-    private $child;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\RequestNanny", mappedBy="nanny")
-     */
-    private $requests;
-
-    public function __construct()
-    {
-        $this->Child = new ArrayCollection();
-        $this->requests = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -223,72 +207,9 @@ class Nanny implements UserInterface
         return $this;
     }
 
-
-    /**
-     * @return Collection|Child[]
-     */
-    public function getChild(): Collection
-    {
-        return $this->child;
-    }
-
-    public function addChild(Child $child): self
-    {
-        if (!$this->child->contains($child)) {
-            $this->child[] = $child;
-            $child->setNanny($this);
-        }
-
-        return $this;
-    }
-
-    public function removeChild(Child $child): self
-    {
-        if ($this->child->contains($child)) {
-            $this->child->removeElement($child);
-            // set the owning side to null (unless already changed)
-            if ($child->getNanny() === $this) {
-                $child->setNanny(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|RequestNanny[]
-     */
-    public function getRequests(): Collection
-    {
-        return $this->requests;
-    }
-
-    public function addRequest(RequestNanny $request): self
-    {
-        if (!$this->requests->contains($request)) {
-            $this->requests[] = $request;
-            $request->setNanny($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRequest(RequestNanny $request): self
-    {
-        if ($this->requests->contains($request)) {
-            $this->requests->removeElement($request);
-            // set the owning side to null (unless already changed)
-            if ($request->getNanny() === $this) {
-                $request->setNanny(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getUsername()
     {
-        return $this->getLastName;
+        return $this->getLastName();
     }
 
     public function eraseCredentials(){}

@@ -48,16 +48,6 @@ class Parents
      */
     private $password;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\child", mappedBy="parents", orphanRemoval=true)
-     */
-    private $child;
-
-    public function __construct()
-    {
-        $this->child = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -159,34 +149,4 @@ class Parents
         $this->password = $password;
     }
 
-    /**
-     * @return Collection|child[]
-     */
-    public function getChild(): Collection
-    {
-        return $this->child;
-    }
-
-    public function addChild(child $child): self
-    {
-        if (!$this->child->contains($child)) {
-            $this->child[] = $child;
-            $child->setParents($this);
-        }
-
-        return $this;
-    }
-
-    public function removeChild(child $child): self
-    {
-        if ($this->child->contains($child)) {
-            $this->child->removeElement($child);
-            // set the owning side to null (unless already changed)
-            if ($child->getParents() === $this) {
-                $child->setParents(null);
-            }
-        }
-
-        return $this;
-    }
 }

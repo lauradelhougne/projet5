@@ -19,6 +19,16 @@ class Child
     private $id;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $parentsId;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nannyId;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $lastName;
@@ -218,67 +228,43 @@ class Child
      */
     private $notesAllergy;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Parents", inversedBy="child")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $parents;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Nanny", inversedBy="Child")
-     */
-    private $nanny;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="child")
-     */
-    private $articles;
-
-    public function __construct()
-    {
-        $this->articles = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNotesAllergy(): ?string
+    /**
+     * @return mixed
+     */
+    public function getParentsId()
     {
-        return $this->notesAllergy;
+        return $this->parentsId;
     }
 
-    public function setNotesAllergy(?string $notesAllergy): self
+    /**
+     * @param mixed $parentsId
+     */
+    public function setParentsId($parentsId): void
     {
-        $this->notesAllergy = $notesAllergy;
-
-        return $this;
+        $this->parentsId = $parentsId;
     }
 
-    public function getParents(): ?Parents
+    /**
+     * @return mixed
+     */
+    public function getNannyId()
     {
-        return $this->parents;
+        return $this->nannyId;
     }
 
-    public function setParents(?Parents $parents): self
+    /**
+     * @param mixed $nannyId
+     */
+    public function setNannyId($nannyId): void
     {
-        $this->parents = $parents;
-
-        return $this;
+        $this->nannyId = $nannyId;
     }
 
-    public function getNanny(): ?Nanny
-    {
-        return $this->nanny;
-    }
-
-    public function setNanny(?Nanny $nanny): self
-    {
-        $this->nanny = $nanny;
-
-        return $this;
-    }
     /**
      * @return mixed
      */
@@ -903,33 +889,14 @@ class Child
         $this->person2FirstName = $person2FirstName;
     }
 
-    /**
-     * @return Collection|Article[]
-     */
-    public function getArticles(): Collection
+    public function getNotesAllergy(): ?string
     {
-        return $this->articles;
+        return $this->notesAllergy;
     }
 
-    public function addArticle(Article $article): self
+    public function setNotesAllergy(?string $notesAllergy): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
-            $article->setChild($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArticle(Article $article): self
-    {
-        if ($this->articles->contains($article)) {
-            $this->articles->removeElement($article);
-            // set the owning side to null (unless already changed)
-            if ($article->getChild() === $this) {
-                $article->setChild(null);
-            }
-        }
+        $this->notesAllergy = $notesAllergy;
 
         return $this;
     }

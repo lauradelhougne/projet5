@@ -17,6 +17,16 @@ class Article
     private $id;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $nannyId;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $childId;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $datetime;
@@ -52,16 +62,43 @@ class Article
     private $notes;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\child", inversedBy="articles")
-     */
-    private $child;
-
-    /**
      * @return int|null
      */
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNannyId()
+    {
+        return $this->nannyId;
+    }
+
+    /**
+     * @param mixed $nannyId
+     */
+    public function setNannyId($nannyId): void
+    {
+        $this->nannyId = $nannyId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChildId()
+    {
+        return $this->childId;
+    }
+
+    /**
+     * @param mixed $childId
+     */
+    public function setChildId($childId): void
+    {
+        $this->childId = $childId;
     }
 
     /**
@@ -193,25 +230,6 @@ class Article
     public function setNotes(string $notes): self
     {
         $this->notes = $notes;
-
-        return $this;
-    }
-
-    /**
-     * @return child|null
-     */
-    public function getChild(): ?child
-    {
-        return $this->child;
-    }
-
-    /**
-     * @param child|null $child
-     * @return Article
-     */
-    public function setChild(?child $child): self
-    {
-        $this->child = $child;
 
         return $this;
     }

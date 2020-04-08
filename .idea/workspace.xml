@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2621d533-bad0-4d91-b46a-366ca82ed0b4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/projet5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projet5.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Nanny.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Nanny.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/app/contactNanny.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/contactNanny.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/app/nannyList.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/nannyList.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/connection.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/connection.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/nannyRegistration.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/nannyRegistration.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/requestsNanny.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/requestsNanny.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +182,7 @@
       <workItem from="1586247200889" duration="249000" />
       <workItem from="1586247463544" duration="486000" />
       <workItem from="1586247970250" duration="5945000" />
-      <workItem from="1586331474052" duration="7142000" />
+      <workItem from="1586331474052" duration="9452000" />
     </task>
     <task id="LOCAL-00001" summary="Simplification of entity structure">
       <created>1586336095381</created>
@@ -215,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586338624653</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update confs files">
+      <created>1586338677635</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586338677635</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,33 +222,34 @@
     <MESSAGE value="Simplification of entity structure" />
     <MESSAGE value="Modification AppController to save a requestNanny in database" />
     <MESSAGE value="User connection fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="User connection fix" />
+    <MESSAGE value="Update confs files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update confs files" />
   </component>
   <component name="WindowStateProjectService">
     <state x="753" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1586334251321">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="753" y="236" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586334251321" />
-    <state x="610" y="104" key="CommitChangelistDialog2" timestamp="1586338622446">
+    <state x="610" y="104" key="CommitChangelistDialog2" timestamp="1586338675735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="610" y="104" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586338622446" />
+    <state x="610" y="104" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586338675735" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1586250630213">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586250630213" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1586338626942">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1586338679407">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586338626942" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586338679407" />
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586331473910">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586331473910" />
-    <state x="658" y="118" width="737" height="804" key="find.popup" timestamp="1586337190650">
+    <state x="658" y="118" width="737" height="804" key="find.popup" timestamp="1586339021901">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="658" y="118" width="737" height="804" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586337190650" />
+    <state x="658" y="118" width="737" height="804" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586339021901" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586336765938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

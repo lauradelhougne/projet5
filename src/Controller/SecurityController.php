@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\RequestNanny;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Nanny;
@@ -28,7 +29,6 @@ class SecurityController extends AbstractController
             $manager->flush();
             return $this->render('security/connection.html.twig');
         };
-
 
         return $this->render('security/nannyRegistration.html.twig', [
             'form' => $form->createView()
@@ -111,6 +111,11 @@ class SecurityController extends AbstractController
      */
     public function requestsNanny()
     {
-        return $this->render('security/requestsNanny.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => $this->getUser()->getId()]);
+
+        return $this->render('security/requestsNanny.html.twig', [
+            'listRequests' => $listRequests,
+        ]);
     }
 }

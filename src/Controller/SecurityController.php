@@ -40,7 +40,8 @@ class SecurityController extends AbstractController
      */
     public function login()
     {
-        return $this->render('security/connection.html.twig');
+        return $this->render('security/connection.html.twig', [
+        ]);
     }
 
 
@@ -49,7 +50,8 @@ class SecurityController extends AbstractController
      */
     public function test()
     {
-        return $this->render('security/childListNanny.html.twig');
+        return $this->render('security/childListNanny.html.twig', [
+        ]);
     }
 
     /**
@@ -63,7 +65,8 @@ class SecurityController extends AbstractController
      */
     public function childListNanny()
     {
-        return $this->render('security/childListNanny.html.twig');
+        return $this->render('security/childListNanny.html.twig', [
+        ]);
     }
 
     /**
@@ -71,7 +74,8 @@ class SecurityController extends AbstractController
      */
     public function childListParents()
     {
-        return $this->render('security/childListParents.html.twig');
+        return $this->render('security/childListParents.html.twig', [
+        ]);
     }
 
     /**
@@ -79,7 +83,8 @@ class SecurityController extends AbstractController
      */
     public function modifyChildInfos()
     {
-        return $this->render('security/modifyChildInfos.html.twig');
+        return $this->render('security/modifyChildInfos.html.twig', [
+        ]);
     }
 
     /**
@@ -87,7 +92,8 @@ class SecurityController extends AbstractController
      */
     public function modifyParentsInfos()
     {
-        return $this->render('security/modifyParentsInfos.html.twig');
+        return $this->render('security/modifyParentsInfos.html.twig', [
+        ]);
     }
 
     /**
@@ -95,7 +101,8 @@ class SecurityController extends AbstractController
      */
     public function modifyNannyInfos()
     {
-        return $this->render('security/modifyNannyInfos.html.twig');
+        return $this->render('security/modifyNannyInfos.html.twig', [
+        ]);
     }
 
     /**
@@ -103,7 +110,8 @@ class SecurityController extends AbstractController
      */
     public function createArticle()
     {
-        return $this->render('security/createArticle.html.twig');
+        return $this->render('security/createArticle.html.twig', [
+        ]);
     }
 
     /**

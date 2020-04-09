@@ -17,7 +17,6 @@ class AppController extends AbstractController
     public function index()
     {
         return $this->render('app/index.html.twig', [
-            'controller_name' => 'AppController',
         ]);
     }
 
@@ -27,7 +26,6 @@ class AppController extends AbstractController
     public function home()
     {
         return $this->render('app/index.html.twig', [
-            'controller_name' => 'AppController',
         ]);
     }
 
@@ -65,6 +63,7 @@ class AppController extends AbstractController
         }
 
         return $this->render('app/contactNanny.html.twig', [
+            'userType' => $userType,
             'form' => $form->createView(),
         ]);
     }

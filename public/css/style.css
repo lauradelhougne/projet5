@@ -449,6 +449,14 @@ footer{
     color: #d6004f;
 }
 
+.request-label{
+    font-weight: bold;
+}
+
+.contactNanny p{
+    font-size: 17px;
+}
+
 .submitButton{
     background-color: #d6004f !important;
     border: #d6004f !important;
@@ -463,7 +471,7 @@ footer{
 
 #formJournal{
     text-align: center;
-    color: #200061²;
+    color: #200061;
 }
 
 #formJournal button{

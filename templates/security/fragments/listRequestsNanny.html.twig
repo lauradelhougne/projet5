@@ -1,0 +1,51 @@
+{% for request in listRequests %}
+    <div class="col-md-8">
+        <h4 style="color: #d6004f; margin-bottom: 1em;">Demande du {{ request.dateTime | date("d/m/Y") }} </h4>
+        <form class="contactNanny" novalidate="">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <p><span class="request-label">Nom de l'enfant : </span>{{ request.childLastName }} </p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <p><span class="request-label">Prénom de l'enfant : </span>{{ request.childFirstName }} </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <p><span class="request-label">Date de naissance ou terme : </span>{{ request.dateBirth | date("d/m/Y") }} </p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <p><span class="request-label">Date début de garde souhaitée : </span>{{ request.startDate | date("d/m/Y") }}</p>
+                </div>
+            </div>
+            <p><span class="request-label">Jour d'acceuil souhaités :</span></p>
+            <ul class="col-md-6 mb-4">
+                {% for day in request.daysChildCare %}
+                    <li>{{ day }}</li>
+                {% endfor %}
+            </ul>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <p class="mb-0"><span class="request-label">Nom du parent : </span>{{ request.parentLastName }}</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <p class="mb-0"><span class="request-label">Prénom du parent : </span>{{ request.parentLastName }}</p>
+                </div>
+            </div>
+
+            <p class="mb-4"><span class="request-label">Lien de parenté avec l'enfant : </span>{{ request.relation }}</p>
+
+            <p class="mb-4"><span class="request-label">Email : </span>{{ request.email }}</p>
+
+            <p class="mb-4"><span class="request-label">Téléphone : </span>{{ request.phone }}</p>
+
+            <p class="mb-4"><span class="request-label">Message : </span>{{ request.message }}</p>
+
+            <div class="row justify-content-center">
+                <span class="btn btn-primary submitButton col-md-3 confirm-request" style="margin-right: 2em;" data-id="{{ request.id }}">Accepter</span>
+                <span class="btn btn-primary submitButton col-md-3 refuse-request" data-id="{{ request.id }}">Refuser</span>
+            </div>
+        </form>
+        <hr class="my-5">
+    </div>
+{% endfor %}

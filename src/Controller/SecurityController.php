@@ -126,4 +126,20 @@ class SecurityController extends AbstractController
             'listRequests' => $listRequests,
         ]);
     }
+    /**
+     * @Route("/deleteRequest", name="ajax_delete_request")
+     */
+    public function deleteRequest(Request $request)
+    {
+        if($request->isXmlHttpRequest()){
+            $em = $this->getDoctrine()->getManager();
+            $requestToDelete = $em->getRepository(RequestNanny::class)->findOneBy(['id' => $request->get("id")]);
+            $em->remove($requestToDelete);
+            $em->flush();
+            $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => $this->getUser()->getId()]);
+            return $this->render('security/fragments/listRequestsNanny.html.twig', [
+                'listRequests' => $listRequests,
+            ]);
+        }
+    }
 }

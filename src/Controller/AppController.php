@@ -63,7 +63,6 @@ class AppController extends AbstractController
         }
 
         return $this->render('app/contactNanny.html.twig', [
-            'userType' => $userType,
             'form' => $form->createView(),
         ]);
     }

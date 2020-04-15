@@ -5,8 +5,8 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-
         <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('jquery-confirm-v3.3.4/css/jquery-confirm.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="icon" href="{{ asset('img/favicon1.ico') }}" />
         {% block stylesheets %}{% endblock %}
@@ -21,8 +21,9 @@
                 </div>
             </div>
         </footer>
-        {% block javascripts %}{% endblock %}
         <script src="{{ asset('jquery/jquery.js') }}"></script>
         <script src="{{ asset('bootstrap/js/bootstrap.bundle.js') }}"></script>
+        <script src="{{ asset('jquery-confirm-v3.3.4/js/jquery-confirm.js') }}"></script>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

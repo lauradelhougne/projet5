@@ -20,63 +20,51 @@
         </div>
     </header>
 
-    <div class="titleChild">Gérer mes demandes</div>
-    <section >
+    <div class="titleChild my-5">Gérer mes demandes</div>
+    <section>
         <div class="container">
-            <div class="row justify-content-center">
-                {% for request in listRequests %}
-                    <div class="col-md-8 ">
-                        <h4 style="color: #d6004f; margin-bottom: 1em;">Demande du {{ request.dateTime | date("d/m/Y") }} </h4>
-                        <form class="contactNanny" novalidate="">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <p>Nom de l'enfant : {{ request.childLastName }} </p>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <p>Prénom de l'enfant : {{ request.childFirstName }} </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <p>Date de naissance ou terme : {{ request.dateBirth | date("d/m/Y") }} </p>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <p>Date début de garde souhaitée : {{ request.startDate | date("d/m/Y") }}</p>
-                                </div>
-                            </div>
-                            <p>Jour d'acceuil souhaités :</p>
-                                <ul class="col-md-6 mb-3">
-                                    {% for day in request.daysChildCare %}
-                                        <li>{{ day }}</li>
-                                    {% endfor %}
-                                </ul>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <p>Nom du parent : {{ request.parentLastName }}</p>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <p>Prénom du parent : {{ request.parentLastName }}</p>
-                                </div>
-                            </div>
-
-                            <p>Lien de parenté avec l'enfant : {{ request.relation }}</p>
-
-                            <p>Email : {{ request.email }}</p>
-                            <p>Téléphone : {{ request.phone }}</p>
-
-                            <p>Message : {{ request.message }}</p>
-
-                            <div class="row justify-content-center ">
-                                <button class="btn btn-primary  submitButton col-md-3" type="submit" style="margin-right: 2em;">Accepter</button>
-                                <button class="btn btn-primary  submitButton col-md-3" type="submit">Refuser</button>
-                            </div>
-                        </form>
-                        <hr class="mb-4">
-                    </div>
-                {% endfor %}
+            <div class="row justify-content-center list-requests">
+                {{ include('security/fragments/listRequestsNanny.html.twig') }}
             </div>
         </div>
-
     </section>
+{% endblock %}
 
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('.refuse-request').click(function(){
+                var id = $(this).data('id');
+                $.confirm({
+                    'title'     : 'Attention',
+                    'content'   : 'Etes-vous sûr de vouloir supprimer la demande ?',
+                    'buttons'   : {
+                        'Confirmer la suppression'   : {
+                            'action': function(){
+                                $.ajax({
+                                    url: '{{ path("ajax_delete_request") }}',
+                                    type: 'POST',
+                                    data: { id: id },
+                                    success: (function($data){
+                                        $('.list-requests').html($data);
+                                        $.confirm({
+                                            'title'     : 'La demande a été supprimée',
+                                            'content'   : 'Un mail a été envoyé aux parents pour les en informer',
+                                            'buttons'   : {
+                                                'Fermer': {
+                                                    'action': function(){}
+                                                }
+                                            }
+                                        });
+                                    })
+                                });
+                            }},
+                        'Annuler' : {
+                            'action': function(){}
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

@@ -48,6 +48,11 @@ class Parents implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $clearpassword;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -147,6 +152,22 @@ class Parents implements UserInterface
     public function setPassword($password): void
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClearpassword()
+    {
+        return $this->clearpassword;
+    }
+
+    /**
+     * @param mixed $clearpassword
+     */
+    public function setClearpassword($clearpassword): void
+    {
+        $this->clearpassword = $clearpassword;
     }
 
     public function getUsername()

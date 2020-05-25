@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Child;
+use App\Entity\Parents;
 use App\Entity\RequestNanny;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,9 +43,19 @@ class SecurityController extends AbstractController
     public function login()
     {
         return $this->render('security/connection.html.twig', [
+            'user' => 'nanny'
         ]);
     }
 
+    /**
+     * @Route("/parents_login", name="parents_login")
+     */
+    public function parentsLogin()
+    {
+        return $this->render('security/connection.html.twig', [
+            'user' => 'parents'
+        ]);
+    }
 
     /**
      * @Route("/test", name="test")
@@ -136,6 +148,54 @@ class SecurityController extends AbstractController
             $requestToDelete = $em->getRepository(RequestNanny::class)->findOneBy(['id' => $request->get("id")]);
             $em->remove($requestToDelete);
             $em->flush();
+            $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => $this->getUser()->getId()]);
+            return $this->render('security/fragments/listRequestsNanny.html.twig', [
+                'listRequests' => $listRequests,
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/acceptRequest", name="ajax_accept_request")
+     */
+    public function acceptRequest(Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        if($request->isXmlHttpRequest()){
+            $em = $this->getDoctrine()->getManager();
+            $requestToDelete = $em->getRepository(RequestNanny::class)->findOneBy(['id' => $request->get("id")]);
+
+            $parents = new Parents;
+            $parents->setLastName($requestToDelete->getParentLastName());
+            $parents->setFirstName($requestToDelete->getParentFirstName());
+            $parents->setRelation($requestToDelete->getRelation());
+            $parents->setEmail($requestToDelete->getEmail());
+            $parents->setPhone($requestToDelete->getPhone());
+            $parents->setClearpassword('test');
+            $hash = $encoder->encodePassword($parents, 'test');
+            $parents->setPassword($hash);
+
+            $em->persist($parents);
+            $em->flush();
+
+            $parents = $em->getRepository(Parents::class)->findOneBy(['email' => $requestToDelete->getEmail()]);
+            $child = new Child;
+            $child->setNannyId($requestToDelete->getNannyId());
+            $child->setParentsId($parents->getId());
+            $child->setFirstName($requestToDelete->getChildFirstName());
+            $child->setLastName($requestToDelete->getChildLastName());
+            $child->setBirthDate($requestToDelete->getDateBirth());
+            $child->setStartDate($requestToDelete->getStartDate());
+            $child->setDaysChildcare($requestToDelete->getDaysChildcare());
+            $child->setParent1LastName($requestToDelete->getParentLastName());
+            $child->setParent1FirstName($requestToDelete->getParentFirstName());
+            $child->setParent1Email($requestToDelete->getEmail());
+            $child->setParent1Phone($requestToDelete->getPhone());
+
+            $em->persist($child);
+            $em->flush();
+
+            //$em->remove($requestToDelete);
+            //$em->flush();
             $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => $this->getUser()->getId()]);
             return $this->render('security/fragments/listRequestsNanny.html.twig', [
                 'listRequests' => $listRequests,

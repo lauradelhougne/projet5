@@ -1,0 +1,31 @@
+<div class="col-lg-6">
+    <div class="card mb-5 mb-lg-0">
+        <div class="card-body">
+            <h5 class="card-price text-center">NOUNOU</h5>
+            <hr>
+            <form action="{{ path('security_login') }}" method="POST" class="form-signin">
+                <div class="form-label-group">
+                    <label for="inputEmail">Adresse mail</label>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="votre@mail.fr" name="_username">
+                </div>
+
+                <div class="form-label-group">
+                    <label for="inputPassword">Mot de passe</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" name="_password" >
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Se connecter</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <div class="card mb-4 mb-lg-0">
+        <div class="card-body">
+            <img class="mx-auto rounded-circle" src="{{ asset('img/parents.png') }}" alt="">
+            <h4>Vous souhaitez accéder à l'espace Parents ?</h4>
+            <a href="{{ path("parents_login") }}" class="btn btn-lg btn-primary btn-block text-uppercase">C'est par ici !</a>
+        </div>
+    </div>
+</div>

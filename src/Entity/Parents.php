@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ParentsRepository")
  */
-class Parents
+class Parents implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -147,6 +147,20 @@ class Parents
     public function setPassword($password): void
     {
         $this->password = $password;
+    }
+
+    public function getUsername()
+    {
+        return $this->getEmail();
+    }
+
+    public function eraseCredentials(){}
+
+    public function getSalt(){}
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
     }
 
 }

@@ -43,9 +43,14 @@ class Child
     private $birthDate;
 
     /**
-     * @ORM\Column(type="collection", length=255, nullable=true)
+     * @ORM\Column(type="array", length=255, nullable=true)
      */
     private $daysChildcare;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $startDate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -344,6 +349,22 @@ class Child
     public function setDaysChildcare($daysChildcare): void
     {
         $this->daysChildcare = $daysChildcare;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param mixed $startDate
+     */
+    public function setStartDate($startDate): void
+    {
+        $this->startDate = $startDate;
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -42,6 +41,11 @@ class Child
      * @ORM\Column(type="datetime")
      */
     private $birthDate;
+
+    /**
+     * @ORM\Column(type="collection", length=255, nullable=true)
+     */
+    private $daysChildcare;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -99,6 +103,11 @@ class Child
     private $parent1Phone;
 
     /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $parent1Email;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $parent1Profession;
@@ -137,6 +146,11 @@ class Child
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     private $parent2Phone;
+
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $parent2Email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -228,7 +242,10 @@ class Child
      */
     private $notesAllergy;
 
-    public function getId(): ?int
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
@@ -311,6 +328,22 @@ class Child
     public function setBirthDate($birthDate): void
     {
         $this->birthDate = $birthDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDaysChildcare()
+    {
+        return $this->daysChildcare;
+    }
+
+    /**
+     * @param mixed $daysChildcare
+     */
+    public function setDaysChildcare($daysChildcare): void
+    {
+        $this->daysChildcare = $daysChildcare;
     }
 
     /**
@@ -492,6 +525,22 @@ class Child
     /**
      * @return mixed
      */
+    public function getParent1Email()
+    {
+        return $this->parent1Email;
+    }
+
+    /**
+     * @param mixed $parent1Email
+     */
+    public function setParent1Email($parent1Email): void
+    {
+        $this->parent1Email = $parent1Email;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getParent1Profession()
     {
         return $this->parent1Profession;
@@ -620,6 +669,22 @@ class Child
     /**
      * @return mixed
      */
+    public function getParent2Email()
+    {
+        return $this->parent2Email;
+    }
+
+    /**
+     * @param mixed $parent2Email
+     */
+    public function setParent2Email($parent2Email): void
+    {
+        $this->parent2Email = $parent2Email;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getParent2Profession()
     {
         return $this->parent2Profession;
@@ -711,6 +776,38 @@ class Child
     public function setPerson1Address($person1Address): void
     {
         $this->person1Address = $person1Address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson2LastName()
+    {
+        return $this->person2LastName;
+    }
+
+    /**
+     * @param mixed $person2LastName
+     */
+    public function setPerson2LastName($person2LastName): void
+    {
+        $this->person2LastName = $person2LastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerson2FirstName()
+    {
+        return $this->person2FirstName;
+    }
+
+    /**
+     * @param mixed $person2FirstName
+     */
+    public function setPerson2FirstName($person2FirstName): void
+    {
+        $this->person2FirstName = $person2FirstName;
     }
 
     /**
@@ -860,44 +957,16 @@ class Child
     /**
      * @return mixed
      */
-    public function getPerson2LastName()
-    {
-        return $this->person2LastName;
-    }
-
-    /**
-     * @param mixed $person2LastName
-     */
-    public function setPerson2LastName($person2LastName): void
-    {
-        $this->person2LastName = $person2LastName;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPerson2FirstName()
-    {
-        return $this->person2FirstName;
-    }
-
-    /**
-     * @param mixed $person2FirstName
-     */
-    public function setPerson2FirstName($person2FirstName): void
-    {
-        $this->person2FirstName = $person2FirstName;
-    }
-
-    public function getNotesAllergy(): ?string
+    public function getNotesAllergy()
     {
         return $this->notesAllergy;
     }
 
-    public function setNotesAllergy(?string $notesAllergy): self
+    /**
+     * @param mixed $notesAllergy
+     */
+    public function setNotesAllergy($notesAllergy): void
     {
         $this->notesAllergy = $notesAllergy;
-
-        return $this;
     }
 }

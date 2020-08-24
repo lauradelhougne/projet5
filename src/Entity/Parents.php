@@ -2,14 +2,19 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ParentsRepository")
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="L'email que vous avez indiqué est déjà utilisé"
+ * )
  */
-class Parents
+class Parents implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -34,7 +39,8 @@ class Parents
     private $relation;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Email(message="L'adresse mail est invalide", checkMX =true)
      */
     private $email;
 
@@ -44,9 +50,15 @@ class Parents
     private $phone;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+    */
+    private $clearPassword;
 
     public function getId(): ?int
     {
@@ -141,12 +153,40 @@ class Parents
         return $this->password;
     }
 
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password): void
+    public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getClearPassword()
+    {
+        return $this->clearPassword;
+    }
+
+    /**
+     * @param mixed $clearPassword
+     */
+    public function setClearPassword($clearPassword): void
+    {
+        $this->clearPassword = $clearPassword;
+    }
+
+    public function getUsername()
+    {
+        return $this->getEmail();
+    }
+
+    public function eraseCredentials(){}
+
+    public function getSalt(){}
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
 }

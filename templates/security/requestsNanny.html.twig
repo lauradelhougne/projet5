@@ -33,6 +33,40 @@
 {% block javascripts %}
     <script>
         $(document).ready(function(){
+            $('.confirm-request').click(function(){
+                var id = $(this).data('id');
+                $.confirm({
+                    'title'     : 'Attention',
+                    'content'   : 'Etes-vous sûr de vouloir accepter la demande ?',
+                    'buttons'   : {
+                        'Accepter'   : {
+                            'action': function(){
+                                $.ajax({
+                                    url: '{{ path("ajax_accept_request") }}',
+                                    type: 'POST',
+                                    data: { id: id },
+                                    success: (function($data){
+                                        $('.list-requests').html($data);
+                                        console.log($data);
+                                        $.confirm({
+                                            'title'     : 'La demande a été acceptée',
+                                            'content'   : 'Un mail a été envoyé aux parents pour les en informer </br> ' +
+                                                'Vous pouvez maintenant retrouver ',
+                                            'buttons'   : {
+                                                'Fermer': {
+                                                    'action': function(){}
+                                                }
+                                            }
+                                        });
+                                    })
+                                });
+                            }},
+                        'Annuler' : {
+                            'action': function(){}
+                        }
+                    }
+                });
+            });
             $('.refuse-request').click(function(){
                 var id = $(this).data('id');
                 $.confirm({

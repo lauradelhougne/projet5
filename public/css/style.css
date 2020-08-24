@@ -21,10 +21,14 @@ p, li{
 #mainNav {
     background-color: #63a8c7e0;
     text-align: center;
+    -webkit-transition: background-color .75s; /* Safari */
+    transition: background-color .75s;
 }
 
 .logo{
     width:80%;
+    -webkit-transition: width .75s; /* Safari */
+    transition: width .75s;
 }
 
 #mainNav .navbar-toggler {

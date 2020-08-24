@@ -3,18 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ParentsRepository")
- * @UniqueEntity(
- *     fields={"email"},
- *     message="L'email que vous avez indiqué est déjà utilisé"
- * )
  */
-class Parents implements UserInterface
+class Parents
 {
     /**
      * @ORM\Id()
@@ -40,7 +36,6 @@ class Parents implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\Email(message="L'adresse mail est invalide", checkMX =true)
      */
     private $email;
 
@@ -51,34 +46,29 @@ class Parents implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
-    */
-    private $clearPassword;
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $clearpassword;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
-    /**
-     * @param mixed $lastName
-     */
-    public function setLastName($lastName): void
+    public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
+
+        return $this;
     }
 
     /**
@@ -145,10 +135,7 @@ class Parents implements UserInterface
         $this->phone = $phone;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -163,17 +150,17 @@ class Parents implements UserInterface
     /**
      * @return mixed
      */
-    public function getClearPassword()
+    public function getClearpassword()
     {
-        return $this->clearPassword;
+        return $this->clearpassword;
     }
 
     /**
-     * @param mixed $clearPassword
+     * @param mixed $clearpassword
      */
-    public function setClearPassword($clearPassword): void
+    public function setClearpassword($clearpassword): void
     {
-        $this->clearPassword = $clearPassword;
+        $this->clearpassword = $clearpassword;
     }
 
     public function getUsername()

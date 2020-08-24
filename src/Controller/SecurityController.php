@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Child;
 use App\Entity\Parents;
 use App\Entity\RequestNanny;
 use App\Service\UserService;
@@ -38,20 +39,23 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/security_login", name="security_login")
+     * @Route("/nanny_login", name="nanny_login")
      */
-    public function login()
+    public function nannyLogin()
     {
+        $test = "test";
         return $this->render('security/connection.html.twig', [
+            'user' => 'nanny'
         ]);
     }
 
     /**
-     * @Route("/parents/security_login", name="parents_login")
+     * @Route("/parents_login", name="parents_login")
      */
     public function parentsLogin()
     {
         return $this->render('security/connection.html.twig', [
+            'user' => 'parents'
         ]);
     }
 
@@ -65,7 +69,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="security_logout")
+     * @Route("logout", name="security_logout")
      */
     public function logout()
     {}
@@ -130,6 +134,7 @@ class SecurityController extends AbstractController
     public function requestsNanny()
     {
         $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
         $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => $this->getUser()->getId()]);
 
         return $this->render('security/requestsNanny.html.twig', [
@@ -140,29 +145,13 @@ class SecurityController extends AbstractController
     /**
      * @Route("/deleteRequest", name="ajax_delete_request")
      */
-    public function deleteRequest(Request $request, \Swift_Mailer $mailer)
+    public function deleteRequest(Request $request)
     {
-        if ($request->isXmlHttpRequest()) {
+        if($request->isXmlHttpRequest()){
             $em = $this->getDoctrine()->getManager();
             $requestToDelete = $em->getRepository(RequestNanny::class)->findOneBy(['id' => $request->get("id")]);
-            $nanny = $em->getRepository(Nanny::class)->findOneBy(['id' => $requestToDelete->getNannyId()]);
-
-            $message = (new \Swift_Message("Réponse négative garde d'enfant"))
-                ->setFrom('delhougne.laura@gmail.com')
-                ->setTo($requestToDelete->getEmail())
-                ->setBody($this->renderView(
-                        'emails/deleteRequest.html.twig', [
-                            'firstName' => $requestToDelete->getParentFirstName(),
-                            'lastName' => $requestToDelete->getParentLastName(),
-                            'nannyFirstName' => $nanny->getFirstName(),
-                            'nannyLastName' => $nanny->getLastName(),
-                        ]
-                    ), 'text/html');
-            $mailer->send($message);
-
-            //$em->remove($requestToDelete);
-            //$em->flush();
-
+            $em->remove($requestToDelete);
+            $em->flush();
             $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => $this->getUser()->getId()]);
             return $this->render('security/fragments/listRequestsNanny.html.twig', [
                 'listRequests' => $listRequests,
@@ -173,58 +162,63 @@ class SecurityController extends AbstractController
     /**
      * @Route("/acceptRequest", name="ajax_accept_request")
      */
-    public function acceptRequest(Request $request, \Swift_Mailer $mailer, UserPasswordEncoderInterface $encoder)
+    public function acceptRequest(Request $request, UserPasswordEncoderInterface $encoder)
     {
-        if ($request->isXmlHttpRequest()) {
+        $em = $this->getDoctrine()->getManager();
+        //$requestToDelete = $em->getRepository(RequestNanny::class)->findOneBy(['id' => $request->get("id")]);
+
+        $parents = new Parents;
+        $parents->setLastName('test');
+        $parents->setFirstName("test");
+        $parents->setRelation("test");
+        $parents->setEmail("test@test.fr");
+        $parents->setPhone("0670454658");
+        $parents->setClearpassword('test');
+        $hash = $encoder->encodePassword($parents, 'test');
+        $parents->setPassword($hash);
+
+        $em->persist($parents);
+        $em->flush();
+        /*if($request->isXmlHttpRequest()){
             $em = $this->getDoctrine()->getManager();
             $requestToDelete = $em->getRepository(RequestNanny::class)->findOneBy(['id' => $request->get("id")]);
-            $nanny = $em->getRepository(Nanny::class)->findOneBy(['id' => $requestToDelete->getNannyId()]);
 
-            $service = new UserService;
-            $parentUser = new Parents();
-            $parentUser->setFirstName($requestToDelete->getParentFirstName());
-            $parentUser->setLastName($requestToDelete->getParentLastName());
-            $parentUser->setRelation($requestToDelete->getRelation());
-            $parentUser->setEmail($requestToDelete->getEmail());
-            $parentUser->setPhone($requestToDelete->getPhone());
-            /*$parentUser->setPassword(random_int(10, 10));
-            $hash = $encoder->encodePassword($parentUser, $parentUser->getPassword());
-            $parentUser->setPassword($hash);*/
-            $parentUser->setPassword("test");
-            $hash = $encoder->encodePassword($parentUser, $parentUser->getPassword());
-            $parentUser->setPassword($hash);
-            $parentUser->setClearPassword("test");
-            $em->persist($parentUser);
+            $parents = new Parents;
+            $parents->setLastName($requestToDelete->getParentLastName());
+            $parents->setFirstName($requestToDelete->getParentFirstName());
+            $parents->setRelation($requestToDelete->getRelation());
+            $parents->setEmail($requestToDelete->getEmail());
+            $parents->setPhone($requestToDelete->getPhone());
+            $parents->setClearpassword('test');
+            $hash = $encoder->encodePassword($parents, 'test');
+            $parents->setPassword($hash);
+
+            $em->persist($parents);
             $em->flush();
 
-            $parent = $em->getRepository(Parents::class)->findOneBy(['email' => $requestToDelete->getEmail()]);
-
-            $child = $service->createChild($requestToDelete, $nanny, $parent);
+            $parents = $em->getRepository(Parents::class)->findOneBy(['email' => $requestToDelete->getEmail()]);
+            $child = new Child;
+            $child->setNannyId($requestToDelete->getNannyId());
+            $child->setParentsId($parents->getId());
+            $child->setFirstName($requestToDelete->getChildFirstName());
+            $child->setLastName($requestToDelete->getChildLastName());
+            $child->setBirthDate($requestToDelete->getDateBirth());
+            $child->setStartDate($requestToDelete->getStartDate());
+            $child->setDaysChildcare($requestToDelete->getDaysChildcare());
+            $child->setParent1LastName($requestToDelete->getParentLastName());
+            $child->setParent1FirstName($requestToDelete->getParentFirstName());
+            $child->setParent1Email($requestToDelete->getEmail());
+            $child->setParent1Phone($requestToDelete->getPhone());
 
             $em->persist($child);
-            $em->flush();
-
-            /*$message = (new \Swift_Message("Réponse négative garde d'enfant"))
-                ->setFrom('delhougne.laura@gmail.com')
-                ->setTo($requestToDelete->getEmail())
-                ->setBody($this->renderView(
-                    'emails/deleteRequest.html.twig', [
-                        'firstName' => $requestToDelete->getParentFirstName(),
-                        'lastName' => $requestToDelete->getParentLastName(),
-                        'nannyFirstName' => $nanny->getFirstName(),
-                        'nannyLastName' => $nanny->getLastName(),
-                    ]
-                ), 'text/html');
-            $mailer->send($message);*/
+            $em->flush();*/
 
             //$em->remove($requestToDelete);
             //$em->flush();
-
-            $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => $this->getUser()->getId()]);
+            $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => "1"]);
             return $this->render('security/fragments/listRequestsNanny.html.twig', [
                 'listRequests' => $listRequests,
-                ''
             ]);
-        }
+
     }
 }

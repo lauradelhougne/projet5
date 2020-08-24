@@ -1,43 +1,40 @@
 security:
     encoders:
         App\Entity\Nanny:
-            algorithm: bcrypt
+            algorithm: argon2i
         App\Entity\Parents:
-            algorithm: bcrypt
+            algorithm: argon2i
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
-        nanny:
-            entity:
-                class: App\Entity\Nanny
-                property: email
-        parents:
+        parents_users:
             entity:
                 class: App\Entity\Parents
                 property: email
+        nanny_users:
+            entity:
+                class: App\Entity\Nanny
+                property: email
     firewalls:
-        nanny:
-            anonymous: true
-
-            provider: nanny
-
-            form_login:
-                login_path: security_login
-                check_path: security_login
-
-            logout:
-                path: security_logout
-                target: index
         parents:
+            pattern: ^/parents
+            provider: parents_users
             anonymous: true
-
-            provider: parents
-
             form_login:
                 login_path: parents_login
                 check_path: parents_login
+            logout:
+                path: security_logout
+                target: index
 
+        nanny:
+            pattern: ^/nanny
+            provider: nanny_users
+            anonymous: true
+            form_login:
+                login_path: nanny_login
+                check_path: nanny_login
             logout:
                 path: security_logout
                 target: index

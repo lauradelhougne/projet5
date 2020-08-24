@@ -38,10 +38,11 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/security_login", name="security_login")
+     * @Route("/nanny_login", name="nanny_login")
      */
-    public function login()
+    public function nannyLogin()
     {
+        $test = "test";
         return $this->render('security/connection.html.twig', [
             'user' => 'nanny'
         ]);
@@ -67,7 +68,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="security_logout")
+     * @Route("logout", name="security_logout")
      */
     public function logout()
     {}
@@ -132,6 +133,7 @@ class SecurityController extends AbstractController
     public function requestsNanny()
     {
         $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
         $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => $this->getUser()->getId()]);
 
         return $this->render('security/requestsNanny.html.twig', [
@@ -160,7 +162,22 @@ class SecurityController extends AbstractController
      */
     public function acceptRequest(Request $request, UserPasswordEncoderInterface $encoder)
     {
-        if($request->isXmlHttpRequest()){
+        $em = $this->getDoctrine()->getManager();
+        //$requestToDelete = $em->getRepository(RequestNanny::class)->findOneBy(['id' => $request->get("id")]);
+
+        $parents = new Parents;
+        $parents->setLastName('test');
+        $parents->setFirstName("test");
+        $parents->setRelation("test");
+        $parents->setEmail("test@test.fr");
+        $parents->setPhone("0670454658");
+        $parents->setClearpassword('test');
+        $hash = $encoder->encodePassword($parents, 'test');
+        $parents->setPassword($hash);
+
+        $em->persist($parents);
+        $em->flush();
+        /*if($request->isXmlHttpRequest()){
             $em = $this->getDoctrine()->getManager();
             $requestToDelete = $em->getRepository(RequestNanny::class)->findOneBy(['id' => $request->get("id")]);
 
@@ -192,14 +209,14 @@ class SecurityController extends AbstractController
             $child->setParent1Phone($requestToDelete->getPhone());
 
             $em->persist($child);
-            $em->flush();
+            $em->flush();*/
 
             //$em->remove($requestToDelete);
             //$em->flush();
-            $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => $this->getUser()->getId()]);
+            $listRequests = $em->getRepository(RequestNanny::class)->findBy(['nannyId' => "1"]);
             return $this->render('security/fragments/listRequestsNanny.html.twig', [
                 'listRequests' => $listRequests,
             ]);
-        }
+
     }
 }

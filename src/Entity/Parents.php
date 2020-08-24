@@ -2,12 +2,19 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ParentsRepository")
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="L'email que vous avez indiqué est déjà utilisé"
+ * )
  */
 class Parents implements UserInterface
 {
@@ -34,7 +41,7 @@ class Parents implements UserInterface
     private $relation;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
 
@@ -44,7 +51,7 @@ class Parents implements UserInterface
     private $phone;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $password;
 
@@ -58,20 +65,16 @@ class Parents implements UserInterface
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
-    /**
-     * @param mixed $lastName
-     */
-    public function setLastName($lastName): void
+    public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
+
+        return $this;
     }
 
     /**
@@ -138,20 +141,16 @@ class Parents implements UserInterface
         $this->phone = $phone;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password): void
+    public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
     }
 
     /**
@@ -183,5 +182,4 @@ class Parents implements UserInterface
     {
         return ['ROLE_USER'];
     }
-
 }

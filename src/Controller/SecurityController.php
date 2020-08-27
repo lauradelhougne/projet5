@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\Child;
 use App\Entity\Parents;
 use App\Entity\RequestNanny;
+use App\Form\CreateArticleType;
 use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -69,7 +71,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("logout", name="security_logout")
+     * @Route("/logout", name="security_logout")
      */
     public function logout()
     {}
@@ -79,7 +81,10 @@ class SecurityController extends AbstractController
      */
     public function childListNanny()
     {
+        $em = $this->getDoctrine()->getManager();
+        $childsList = $em->getRepository(Child::class)->findBy(['nannyId' => $this->getUser()->getId()]);
         return $this->render('security/childListNanny.html.twig', [
+            "childsList" => $childsList
         ]);
     }
 
@@ -120,11 +125,36 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/createArticle", name="security_createArticle")
+     * @Route("/createArticle/{id}/{articleId}",
+     *     name="security_createArticle")
      */
-    public function createArticle()
+    public function createArticle(Request $request, $id, $articleId = null)
     {
+        $em = $this->getDoctrine()->getManager();
+        $child = $em->getRepository(Child::class)->findOneBy(['id' => $id]);
+
+        $articles = $em->getRepository(Article::class)->findBy(['childId' => $id], ["datetime" => "DESC"]);
+
+        if(!empty($articleId)) {
+            $article = $em->getRepository(Article::class)->findOneBy(['id' => $articleId]);
+        } else {
+            $article = new Article();
+            $article->setChildId($child->getId());
+        }
+
+        $form = $this->createForm(CreateArticleType::class, $article);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            if(empty($articleId)) {
+                $em->persist($article);
+            }
+            $em->flush();
+            return $this->redirectToRoute("security_createArticle", ["id" => $id]);
+        }
+
         return $this->render('security/createArticle.html.twig', [
+            'form' => $form->createView(),
+            'articles' => $articles
         ]);
     }
 

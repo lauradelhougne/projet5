@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -41,16 +42,6 @@ class Child
      * @ORM\Column(type="datetime")
      */
     private $birthDate;
-
-    /**
-     * @ORM\Column(type="array", length=255, nullable=true)
-     */
-    private $daysChildcare;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $startDate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -346,38 +337,6 @@ class Child
     public function setBirthDate($birthDate): void
     {
         $this->birthDate = $birthDate;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDaysChildcare()
-    {
-        return $this->daysChildcare;
-    }
-
-    /**
-     * @param mixed $daysChildcare
-     */
-    public function setDaysChildcare($daysChildcare): void
-    {
-        $this->daysChildcare = $daysChildcare;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * @param mixed $startDate
-     */
-    public function setStartDate($startDate): void
-    {
-        $this->startDate = $startDate;
     }
 
     /**

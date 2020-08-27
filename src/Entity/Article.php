@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,11 +17,6 @@ class Article
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $nannyId;
 
     /**
      * @ORM\Column(type="integer")
@@ -62,27 +59,19 @@ class Article
     private $notes;
 
     /**
-     * @return int|null
+     * @return mixed
      */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @return mixed
+     * @param mixed $id
      */
-    public function getNannyId()
+    public function setId($id): void
     {
-        return $this->nannyId;
-    }
-
-    /**
-     * @param mixed $nannyId
-     */
-    public function setNannyId($nannyId): void
-    {
-        $this->nannyId = $nannyId;
+        $this->id = $id;
     }
 
     /**
@@ -102,135 +91,114 @@ class Article
     }
 
     /**
-     * @return \DateTimeInterface|null
+     * @return mixed
      */
-    public function getDatetime(): ?\DateTimeInterface
+    public function getDatetime()
     {
         return $this->datetime;
     }
 
     /**
-     * @param \DateTimeInterface $datetime
-     * @return Article
+     * @param mixed $datetime
      */
-    public function setDatetime(\DateTimeInterface $datetime): self
+    public function setDatetime($datetime): void
     {
         $this->datetime = $datetime;
-
-        return $this;
     }
 
     /**
-     * @return string|null
+     * @return mixed
      */
-    public function getMeal(): ?string
+    public function getMeal()
     {
         return $this->meal;
     }
 
     /**
-     * @param string $meal
-     * @return Article
+     * @param mixed $meal
      */
-    public function setMeal(string $meal): self
+    public function setMeal($meal): void
     {
         $this->meal = $meal;
-
-        return $this;
     }
 
     /**
-     * @return string|null
+     * @return mixed
      */
-    public function getSleep(): ?string
+    public function getSleep()
     {
         return $this->sleep;
     }
 
     /**
-     * @param string $sleep
-     * @return Article
+     * @param mixed $sleep
      */
-    public function setSleep(string $sleep): self
+    public function setSleep($sleep): void
     {
         $this->sleep = $sleep;
-
-        return $this;
     }
 
     /**
-     * @return string|null
+     * @return mixed
      */
-    public function getLayers(): ?string
+    public function getLayers()
     {
         return $this->layers;
     }
 
     /**
-     * @param string $layers
-     * @return Article
+     * @param mixed $layers
      */
-    public function setLayers(string $layers): self
+    public function setLayers($layers): void
     {
         $this->layers = $layers;
-
-        return $this;
     }
 
     /**
-     * @return string|null
+     * @return mixed
      */
-    public function getHealth(): ?string
+    public function getHealth()
     {
         return $this->health;
     }
 
     /**
-     * @param string $health
-     * @return Article
+     * @param mixed $health
      */
-    public function setHealth(string $health): self
+    public function setHealth($health): void
     {
         $this->health = $health;
-
-        return $this;
     }
 
     /**
-     * @return string|null
+     * @return mixed
      */
-    public function getActivity(): ?string
+    public function getActivity()
     {
         return $this->activity;
     }
 
     /**
-     * @param string $activity
-     * @return Article
+     * @param mixed $activity
      */
-    public function setActivity(string $activity): self
+    public function setActivity($activity): void
     {
         $this->activity = $activity;
-
-        return $this;
     }
 
     /**
-     * @return string|null
+     * @return mixed
      */
-    public function getNotes(): ?string
+    public function getNotes()
     {
         return $this->notes;
     }
 
     /**
-     * @param string $notes
-     * @return Article
+     * @param mixed $notes
      */
-    public function setNotes(string $notes): self
+    public function setNotes($notes): void
     {
         $this->notes = $notes;
-
-        return $this;
     }
 }

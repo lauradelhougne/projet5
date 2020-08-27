@@ -24,110 +24,79 @@
 
         <div class="container">
             <h4 class="h4Journal">REMPLIR LE JOURNAL</h4>
-            <form id="formJournal" action="" method="post">
-                <label for="meal">Date du jour :</label><br>
-                <input type="text" name="meal" id="meal" class="form-control col-md-1" style="margin: auto;"></textarea>
+            {{ form_start(form, {'attr' : {'id': 'formJournal'}}) }}
+                <label class="my-2">Date du jour :</label><br>
+                {{ form_widget(form.datetime) }}
+
                 <div class="row">
                     <div class="form-group col-md-3">
-                        <label for="meal">Biberons et repas </label><br>
-                        <textarea name="meal" id="meal" class="form-control" rows="5"></textarea>
+                        <label>Biberons et repas </label><br>
+                        {{ form_widget(form.meal, {'attr': {'rows': 5}}) }}
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="meal">Dodos </label><br>
-                        <textarea name="meal" id="meal" class="form-control" rows="5"></textarea>
+                        <label>Dodos </label><br>
+                        {{ form_widget(form.sleep, {'attr': {'rows': 5}}) }}
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="meal">Hygiène / selles </label><br>
-                        <textarea name="meal" id="meal" class="form-control" rows="5"></textarea>
+                        <label>Hygiène / selles </label><br>
+                        {{ form_widget(form.layers, {'attr': {'rows': 5}}) }}
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="meal">Santé </label><br>
-                        <textarea name="meal" id="meal" class="form-control" rows="5"></textarea>
+                        <label>Santé </label><br>
+                        {{ form_widget(form.health, {'attr': {'rows': 5}}) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <label for="meal">Activités et sorties </label><br>
-                        <textarea name="meal" id="meal" class="form-control" rows="5"></textarea>
+                        <label>Activités et sorties </label><br>
+                        {{ form_widget(form.activity, {'attr': {'rows': 5}}) }}
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="meal">Notes </label><br>
-                        <textarea name="meal" class="form-control" rows="5" id="meal"></textarea>
+                        <label>Notes </label><br>
+                        {{ form_widget(form.notes, {'attr': {'rows': 5}}) }}
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
-            </form>
-
+            {{ form_end(form) }}
         </div>
     </section>
     <hr>
+    {% if articles is not empty %}
     <section class="archives">
+        {% for article in articles %}
         <div class="container">
-            <h4>Le 12/12/2019</h4>
+            <h4>{{ article.datetime | date("d/m/Y") }}</h4>
             <div class="row">
                 <div class="form-group col-md-3">
                     <label for="meal">Biberons et repas </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
+                    <p>{{ article.meal }}</p>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="meal">Dodos </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
+                    <p>{{ article.sleep }}</p>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="meal">Selles </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
+                    <p>{{ article.layers }}</p>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="meal">Santé </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
+                    <p>{{ article.health }}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="meal">Activités et sorties </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
+                    <p>{{ article.activity }}</p>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="meal">Notes </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
+                    <p>{{ article.notes }}</p>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary journalModify">Modifier</button>
-
+            <a href="{{ path('security_createArticle', {id: article.childId, articleId: article.id}) }}" class="btn btn-primary journalModify">Modifier</a>
         </div>
-        <div class="container">
-            <h4>Le 12/12/2019</h4>
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <label for="meal">Biberons et repas </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="meal">Dodos </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="meal">Selles </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="meal">Santé </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label for="meal">Activités et sorties </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="meal">Notes </label><br>
-                    <p>In euismod euismod aliquam. Quisque ac sodales felis.  </p>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary journalModify">Modifier</button>
-
-        </div>
+        {% endfor %}
     </section>
-
+    {% endif %}
 {% endblock %}

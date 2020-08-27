@@ -25,62 +25,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <ul>
-                        <li class="timeline-inverted">
-                            <div class="row align-items justify-content-center">
-                                <div class="timeline-image ">
-                                    <img class="rounded-circle img-fluid" src="{{ asset('img/child.png') }}" alt="">
-                                </div>
-                                <div class="timeline-panel col-md-3">
-                                    <div class="timeline-heading">
-                                        <h4 class="nameChild">Simon</h4>
+                    {% if childsList is not empty %}
+                        <ul>
+                            {% for child in childsList %}
+                                <li class="timeline-inverted">
+                                    <div class="row align-items justify-content-center">
+                                        <div class="timeline-image ">
+                                            <img class="rounded-circle img-fluid" src="{{ asset('img/child.png') }}" alt="">
+                                        </div>
+                                        <div class="timeline-panel col-md-3">
+                                            <div class="timeline-heading">
+                                                <h4 class="nameChild">{{ child.firstName }}</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <a href="{{ path('security_createArticle', {id: child.id}) }}" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Ecrire dans le journal</a><br>
+                                                <a href="{{ child.id }}" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire les informations</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="timeline-body">
-                                        <a href="" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Ecrire dans le journal</a><br>
-                                        <a href="" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire les informations</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="row align-items justify-content-center">
-                                <div class="timeline-image ">
-                                    <img class="rounded-circle img-fluid" src="{{ asset('img/child.png') }}" alt="">
-                                </div>
-                                <div class="timeline-panel col-md-3">
-                                    <div class="timeline-heading">
-                                        <h4 class="nameChild">Marina</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <a href="" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Ecrire dans le journal</a><br>
-                                        <a href="" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire les informations</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="row align-items justify-content-center">
-                                <div class="timeline-image ">
-                                    <img class="rounded-circle img-fluid" src="{{ asset('img/child.png') }}" alt="">
-                                </div>
-                                <div class="timeline-panel col-md-3">
-                                    <div class="timeline-heading">
-                                        <h4 class="nameChild">Suzanne</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <a href="" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Ecrire dans le journal</a><br>
-                                        <a href="" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire les informations</a>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                        </li>
-
-                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted text-center">Pour le moment cette section est vide</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

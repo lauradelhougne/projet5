@@ -25,93 +25,70 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 ">
-                    <form class="contactNanny" novalidate="">
+                    {{ form_start(form, {'attr' : {'class': 'contactNanny'}}) }}
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="firstName">Nom</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>
+                                <label>Nom</label>
+                                {{ form_widget(form.lastName) }}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="lastName">Prénom</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
-                                <div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
+                                <label>Prénom</label>
+                                {{ form_widget(form.firstName) }}
                             </div>
                         </div>
                         <div >
-                            <label for="lastName">Adresse :</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
-                            <div class="invalid-feedback">
-                                Valid last name is required.
-                            </div>
+                            <label>Adresse :</label>
+                            {{ form_widget(form.address) }}
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="date">Code Postal</label>
-                                <input class="form-control" type="text" id="example-date-input">
+                                <label>Code Postal</label>
+                                {{ form_widget(form.postal) }}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="lastName">Ville</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
-                                <div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
+                                <label>Ville</label>
+                                {{ form_widget(form.city) }}
                             </div>
 
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="phone">Téléphone <span class="text-muted"></span></label>
-                                <input type="phone" class="form-control" id="phone" >
-                                <div class="invalid-feedback">
-                                    Please enter a valid email address for shipping updates.
-                                </div>
+                                <label>Téléphone <span class="text-muted"></span></label>
+                                {{ form_widget(form.phone) }}
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="lastNameParent">Diplôme</label>
-                                <input type="text" class="form-control" id="lastNameParent" placeholder="" value="" required="">
-                                <div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
+                                <label>Diplôme</label>
+                                {{ form_widget(form.diploma) }}
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="email">Email <span class="text-muted"></span></label>
-                            <input type="email" class="form-control" id="email" placeholder="votre@email.com">
-                            <div class="invalid-feedback">
-                                Please enter a valid email address for shipping updates.
-                            </div>
+                            <label>Email <span class="text-muted"></span></label>
+                            {{ form_widget(form.email) }}
                         </div>
 
                         <div class="mb-3">
-                            <label for="email">Description <span class="text-muted"></span></label>
-                            <textarea name="meal" class="form-control" rows="5" id="meal"></textarea>
-                            <div class="invalid-feedback">
-                                Please enter a valid email address for shipping updates.
-                            </div>
+                            <label>Description <span class="text-muted"></span></label>
+                            {{ form_widget(form.description, {'attr': {'rows': 5}}) }}
                         </div>
 
                         <div class="form-label-group">
-                            <label for="inputPassword">Modifier le mot de passe</label>
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required="">
+                            <label>Modifier le mot de passe</label>
+                            {{ form_errors(form.password) }}
+                            {{ form_widget(form.password) }}
                         </div>
                         <div class="form-label-group">
-                            <label for="inputPassword">Confirmation mot de passe</label>
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required="">
+                            <label>Confirmation mot de passe</label>
+                            {{ form_errors(form.confirm_password) }}
+                            {{ form_widget(form.confirm_password) }}
                         </div>
                         <hr>
                         <button class="btn btn-primary btn-lg btn-block submitButton" type="submit">Enregistrer</button>
-
-                    </form>
+                    {{ form_end(form) }}
                 </div>
             </div>
         </div>

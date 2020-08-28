@@ -39,7 +39,7 @@
                                             </div>
                                             <div class="timeline-body">
                                                 <a href="{{ path('security_createArticle', {id: child.id}) }}" class="text-muted"><i class="fas fa-pencil-alt" style="margin-right: .5em;"></i>Ecrire dans le journal</a><br>
-                                                <a href="{{ child.id }}" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire les informations</a>
+                                                <a href="{{ path('security_readChildInfos', {id: child.id}) }}" class="text-muted"><i class="far fa-file-alt" style="margin-right: .75em;"></i>Lire les informations</a>
                                             </div>
                                         </div>
                                     </div>

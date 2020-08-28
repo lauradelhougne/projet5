@@ -1,0 +1,227 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes enfants{% endblock %}
+
+{% block body %}
+    {% include 'common/navbar.html.twig' %}
+
+    <header class="currentMasthead" style="background-image: url({{ asset('img/bgstar2.jpg') }})">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-11 mx-auto">
+                    <div class="site-heading">
+                        <span class="subheading">Mon espace Nounou</span>
+                        <img src="{{ asset('img/logo2.png') }}" class="logo2" style="width: 20%; margin-bottom: 40px;" alt="logo">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <h4 class="titleChild">Les informations de {{ child.firstName }}</h4>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 ">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Nom : </label> {{ child.lastName }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Prénom : </label> {{ child.firstName }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="date">Date de naissance ou terme : </label> {{ child.birthDate | date("d/m/Y") }}
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Lieu de Naissance : </label> {{ child.address }}
+
+                            </div>
+
+                        </div>
+                        <div >
+                            <label for="lastName">Jour de garde : </label>
+                            {% if child.daysChildCare is not empty %}
+                                {% for day in child.daysChildcare %}
+                                    {{ day }}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div >
+                            <label for="lastName">Adresse : </label> {{ child.address }}
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="date">Code Postal : </label> {{ child.postal }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Ville : </label> {{ child.city }}
+                            </div>
+
+                        </div>
+
+                        <hr class="mb-4">
+                        <h4 class="titleChild">Responsables légaux</h4>
+
+                        <h4 class="mb-3">Parent n°1</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstNameParent">Nom : </label> {{ child.parent1LastName }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastNameParent">Prénom : </label> {{ child.parent1FirstName }}
+                            </div>
+                        </div>
+
+                        <label >Situation familiale :</label> {{ child.parent1FamilySituation }}
+                        <div >
+                            <label for="lastName">Adresse : </label> {{ child.parent1Address }}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="date">Code Postal : </label> {{ child.parent1Postal }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Ville : </label> {{ child.parent1City }}
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email : <span class="text-muted"></span></label> {{ child.parent1Email }}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone">Téléphone : <span class="text-muted"></span></label> {{ child.parent1Phone }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastNameParent">Profession : </label> {{ child.parent1Profession }}
+                            </div>
+                        </div>
+
+                        <h4 class="mb-3" style="margin-top: 1em;">Parent n°2</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstNameParent">Nom : </label> {{ child.parent2LastName }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastNameParent">Prénom : </label> {{ child.parent2FirstName }}
+                            </div>
+                        </div>
+
+                        <label >Situation familiale :</label> {{ child.parent2FamilySituation }}
+                        <div >
+                            <label for="lastName">Adresse : </label> {{ child.parent2Address }}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="date">Code Postal : </label> {{ child.parent2Postal }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Ville : </label> {{ child.parent2City }}
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email : {{ child.parent2Email }}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone">Téléphone : <span class="text-muted"></span></label>  {{ child.parent2Phone }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastNameParent">Profession : </label> {{ child.parent2Profession }}
+                            </div>
+                        </div>
+                        <hr class="mb-4">
+                        <h4 class="titleChild">Personnes habilitées pour la prise en charge de l’enfant en cas d’absence des parents</h4>
+                        <h4 class="mb-3" style="margin-top: 2em;">Personne n°1 :</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstNameParent">Nom : </label> {{ child.person1LastName }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastNameParent">Prénom : </label> {{ child.person1FirstName }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Lien avec l'enfant : </label> {{ child.person1Relation }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone">Téléphone : <span class="text-muted"></span></label> {{ child.person1Phone }}
+                            </div>
+                        </div>
+                        <div >
+                            <label for="lastName">Adresse : </label> {{ child.person1Address }}
+                        </div>
+
+
+                        <h4 class="mb-3" style="margin-top: 2em;">Personne n°2 :</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstNameParent">Nom : </label> {{ child.person2LastName }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastNameParent">Prénom : </label> {{ child.person2FirstName }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Lien avec l'enfant :</label> {{ child.person2Relation }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone">Téléphone : <span class="text-muted"></span></label> {{ child.person2Phone }}
+                            </div>
+                        </div>
+                        <div >
+                            <label for="lastName">Adresse : </label> {{ child.person2Address }}
+                        </div>
+
+                        <hr>
+                        <h4 class="titleChild">Santé</h4>
+                        <h4 class="mb-3" style="margin-top: 2em;">Médecin traitant : </h4>
+                        <div >
+                            <label for="lastName">Nom : </label> {{ child.doctorName }}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Adresse : </label> {{ child.doctorAddress }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone">Téléphone : <span class="text-muted"></span></label> {{ child.doctorPhone }}
+                            </div>
+                        </div>
+                        <h4 class="mb-3" style="margin-top: 2em;">Allergies : </h4>
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+                                <label for="date">Alimentaire : </label> {{ child.foodAllergy }}
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="date">Médicamenteuse :</label> {{ child.drugAllergy}}
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="date">Asthme : </label> {{ child.asthme }}
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="meal">Précisez les causes des allergies : </label><br>
+                                {{ child.notesAllergy }}
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

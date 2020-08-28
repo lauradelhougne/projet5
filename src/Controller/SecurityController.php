@@ -7,6 +7,7 @@ use App\Entity\Child;
 use App\Entity\Parents;
 use App\Entity\RequestNanny;
 use App\Form\CreateArticleType;
+use App\Form\NannyInformationsType;
 use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +46,6 @@ class SecurityController extends AbstractController
      */
     public function nannyLogin()
     {
-        $test = "test";
         return $this->render('security/connection.html.twig', [
             'user' => 'nanny'
         ]);
@@ -77,18 +77,6 @@ class SecurityController extends AbstractController
     {}
 
     /**
-     * @Route("/childListNanny", name="security_childListNanny")
-     */
-    public function childListNanny()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $childsList = $em->getRepository(Child::class)->findBy(['nannyId' => $this->getUser()->getId()]);
-        return $this->render('security/childListNanny.html.twig', [
-            "childsList" => $childsList
-        ]);
-    }
-
-    /**
      * @Route("/childListParents", name="security_childListParents")
      */
     public function childListParents()
@@ -116,11 +104,48 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @Route("/childListNanny", name="security_childListNanny")
+     */
+    public function childListNanny()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $childsList = $em->getRepository(Child::class)->findBy(['nannyId' => $this->getUser()->getId()]);
+        return $this->render('security/childListNanny.html.twig', [
+            "childsList" => $childsList
+        ]);
+    }
+
+    /**
+     * @Route("/readChildInfos/{id}", name="security_readChildInfos")
+     */
+    public function readChildInfos($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $child = $em->getRepository(Child::class)->findOneBy(['id' => $id]);
+        return $this->render('security/readChildInfos.html.twig', [
+            'child' => $child
+        ]);
+    }
+
+    /**
      * @Route("/modifyNannyInfos", name="security_modifyNannyInfos")
      */
-    public function modifyNannyInfos()
+    public function modifyNannyInfos(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $nanny = $em->getRepository(Nanny::class)->findOneBy(['id' => $this->getUser()->getId()]);
+        $form = $this->createForm(NannyInformationsType::class, $nanny);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            if(empty($articleId)) {
+                $em->persist($nanny);
+            }
+            $em->flush();
+            return $this->redirectToRoute("security_createArticle", ["id" => $id]);
+        }
+
         return $this->render('security/modifyNannyInfos.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 
